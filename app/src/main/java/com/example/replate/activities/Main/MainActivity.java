@@ -1,7 +1,9 @@
-package com.example.replate;
+package com.example.replate.activities.Main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.replate.R;
 
 public class MainActivity extends AppCompatActivity {
 
