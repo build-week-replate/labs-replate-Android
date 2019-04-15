@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.adapters.NetworkAdapter;
+import com.example.replate.daos.BusinessLoginDao;
+import com.example.replate.models.Business;
 
 public class BusinessSignup extends AppCompatActivity {
 
@@ -42,22 +44,18 @@ public class BusinessSignup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(checkFields()) {
+                if (checkFields()) {
+                    final Business business = createBusiness();
+
                     new Thread(new Runnable() { //run this if all fields are valid
                         @Override
                         public void run() {
-
+                            BusinessLoginDao.createNewAccount(business);
                         }
                     }).start();
                 }
-
             }
         });
-
-
-
-
-
     }
 
     public boolean checkFields() {
@@ -77,5 +75,16 @@ public class BusinessSignup extends AppCompatActivity {
             Toast.makeText(BusinessSignup.this, "Please Enter an Address", Toast.LENGTH_SHORT).show();
         else return true;
         return false;
+    }
+
+    private Business createBusiness() {
+
+        return new Business(
+                editTextName.getText().toString(),
+                editTextPhone.getText().toString(),
+                editTextEmail.getText().toString(),
+                editTextAddress.getText().toString(),
+                editTextOfficeName.getText().toString(),
+                editTextOfficeEmail.getText().toString());
     }
 }

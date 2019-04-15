@@ -68,7 +68,7 @@ public class NetworkAdapter {
         return imgBitmap;
     }
 
-    static String httpRequest(String urlString, String requestMethod, JSONObject requestBody, Map<String, String> headerProperties) {
+    public static String httpRequest(String urlString, String requestMethod, JSONObject requestBody, Map<String, String> headerProperties) {
         String result = "";
         InputStream inputStream = null;
         HttpsURLConnection connection = null;
@@ -84,7 +84,7 @@ public class NetworkAdapter {
                     connection.setRequestProperty(property.getKey(), property.getValue());
                 }
             }
-            if (requestMethod.equals(POST)||requestMethod.equals(PUT) && requestBody != null) {
+            if (requestMethod.equals(POST) && requestBody != null) {
                 connection.setDoInput(true);
                 final OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(requestBody.toString().getBytes());
