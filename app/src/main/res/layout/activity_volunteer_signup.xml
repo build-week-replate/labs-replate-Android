@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Phone"
-                android:inputType="phone"
+                android:inputType="numberSigned"
                 app:layout_constraintBottom_toTopOf="@+id/editText4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editText3" />

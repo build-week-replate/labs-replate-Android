@@ -32,6 +32,7 @@
         android:id="@+id/edit_text_password_business_login"
         android:layout_width="0dp"
         android:hint="Password"
+        android:inputType="textPassword"
         android:fontFamily="@font/open_sans"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/edit_text_email_business_login"

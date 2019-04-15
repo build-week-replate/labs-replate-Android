@@ -1,5 +1,6 @@
 package com.example.replate.activities.Signup;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.replate.R;
-import com.example.replate.adapters.NetworkAdapter;
-import com.example.replate.daos.BusinessLoginDao;
+import com.example.replate.activities.Dashboard.BusinessDashboard;
+import com.example.replate.daos.UserLoginDao;
 import com.example.replate.models.Business;
 
 public class BusinessSignup extends AppCompatActivity {
@@ -50,7 +51,10 @@ public class BusinessSignup extends AppCompatActivity {
                     new Thread(new Runnable() { //run this if all fields are valid
                         @Override
                         public void run() {
-                            BusinessLoginDao.createNewAccount(business);
+                            String result = UserLoginDao.createNewAccount(business);
+                            Intent intent = new Intent(getApplicationContext(), BusinessDashboard.class);
+                            intent.putExtra("resultString", result);
+                            startActivity(intent);
                         }
                     }).start();
                 }
@@ -81,8 +85,9 @@ public class BusinessSignup extends AppCompatActivity {
 
         return new Business(
                 editTextName.getText().toString(),
-                editTextPhone.getText().toString(),
+                Integer.valueOf(editTextPhone.getText().toString()),
                 editTextEmail.getText().toString(),
+                editTextPassword1.getText().toString(),
                 editTextAddress.getText().toString(),
                 editTextOfficeName.getText().toString(),
                 editTextOfficeEmail.getText().toString());

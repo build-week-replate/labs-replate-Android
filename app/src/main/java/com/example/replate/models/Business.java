@@ -6,30 +6,32 @@ import retrofit2.Retrofit;
 
 public class Business {
     private String companyName;
-    private String phoneNumber;
+    private int phoneNumber;
     private String emailAddress;
     private String address;
     private String officeName;
     private String officeEmail;
+    private String password;
 
-    public Business(String companyName, String phoneNumber, String emailAddress, String address, String officeName, String officeEmail) {
+    public Business(String companyName, int phoneNumber, String emailAddress, String password, String address, String officeName, String officeEmail) {
         this.officeEmail = officeEmail;
         this.companyName = companyName;
         this.phoneNumber = phoneNumber;
         this.emailAddress = emailAddress;
         this.address = address;
         this.officeName = officeName;
+        this.password = password;
     }
 
-    public Business(String companyName, String phoneNumber, String emailAddress, String address, String officeName) {
-        this(companyName, phoneNumber, emailAddress, address, officeName, null);
+    public Business(String companyName, int phoneNumber, String emailAddress, String password, String address, String officeName) {
+        this(companyName, phoneNumber, emailAddress, password, address, officeName, null);
     }
 
     public String getCompanyName() {
         return companyName;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -47,5 +49,9 @@ public class Business {
 
     public String getOfficeEmail() {
         return officeEmail;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
