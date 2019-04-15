@@ -4,13 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".activities.Login.LoginActivity">
 
     <TextView
+        android:id="@+id/text_view_splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I am a"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Hello There"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_login_business" />
+
+    <Button
+        android:id="@+id/button_login_volunteer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Volunteer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_login_business"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_login_business"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Business"
+        app:layout_constraintStart_toEndOf="@id/button_login_volunteer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

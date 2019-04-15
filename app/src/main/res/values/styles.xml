@@ -1,23 +1,32 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimaryDarkGreen</item>
         <item name="colorPrimaryDark">@color/colorPrimaryLightGreen</item>
         <item name="colorAccent">@color/colorAccentGray</item>
         <item name="colorButtonNormal">@color/colorAccentDarkGreen</item>
-        <item name="android:textViewStyle">@style/PacificoTextViewStyle</item>
+        <item name="android:textViewStyle">@style/OpenSansTextViewStyle</item>
         <item name="android:buttonStyle">@style/PacificoButtonStyle</item>
+        <item name="android:editTextStyle">@style/OpenSansEditTextStyle</item>
     </style>
 
 
-    <style name="PacificoTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/pacifico</item>
+    <!--TextView Style-->
+    <style name="OpenSansTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
+    <!-- edittext style not working -->
+    <style name="OpenSansEditTextStyle" parent="android:Widget.EditText">
+        <item name="android:font">@font/open_sans</item>
+    </style>
+
+    <!--Button Style-->
     <style name="PacificoButtonStyle" parent="android:Widget.Holo.Button">
         <item name="android:fontFamily">@font/pacifico</item>
     </style>
+
 
 </resources>
