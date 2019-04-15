@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryDarkGreen</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryLightGreen</item>
+        <item name="colorAccent">@color/colorAccentGray</item>
+        <item name="android:textViewStyle">@style/OpenSansTextViewStyle</item>
+        <item name="android:buttonStyle">@style/PacificoButtonStyle</item>
+        <item name="android:editTextStyle">@style/OpenSansEditTextStyle</item>
+    </style>
+</resources>

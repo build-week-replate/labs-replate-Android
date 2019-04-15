@@ -7,6 +7,16 @@
     android:padding="20dp"
     tools:context=".activities.Login.LoginActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="322dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="44dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/replate_logo" />
+
     <TextView
         android:id="@+id/text_view_splash"
         android:layout_width="wrap_content"
