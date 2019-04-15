@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activities.Login.LoginActivity">
 
+    <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Hello There"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </android.support.constraint.ConstraintLayout>

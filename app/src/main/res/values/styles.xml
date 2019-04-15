@@ -7,6 +7,17 @@
         <item name="colorPrimaryDark">@color/colorPrimaryLightGreen</item>
         <item name="colorAccent">@color/colorAccentGray</item>
         <item name="colorButtonNormal">@color/colorAccentDarkGreen</item>
+        <item name="android:textViewStyle">@style/PacificoTextViewStyle</item>
+        <item name="android:buttonStyle">@style/PacificoButtonStyle</item>
+    </style>
+
+
+    <style name="PacificoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/pacifico</item>
+    </style>
+
+    <style name="PacificoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/pacifico</item>
     </style>
 
 </resources>
