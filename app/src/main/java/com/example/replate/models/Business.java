@@ -1,6 +1,8 @@
 package com.example.replate.models;
 
-public class Business extends User{
+import java.io.Serializable;
+
+public class Business extends User implements Serializable {
     private String address;
     private String officeName;
     private String officeEmail;

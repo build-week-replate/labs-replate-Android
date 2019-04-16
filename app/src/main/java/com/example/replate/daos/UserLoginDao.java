@@ -34,11 +34,9 @@ public class UserLoginDao {
     }
 
 
-    public static JSONObject toJson(User user) { //converts user object to json
+    private static JSONObject toJson(User user) { //converts user object to json
         String type = "company";
         if (user instanceof Volunteer) type = "volunteer";
-
-
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
                 .append("{\"type\":\"" + type + "\",")
