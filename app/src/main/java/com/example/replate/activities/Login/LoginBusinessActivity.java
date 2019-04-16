@@ -34,11 +34,13 @@ public class LoginBusinessActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final String email = editTextEmail.getText().toString();
+                final String password = editTextPassword.getText().toString();
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-
-                        String result = UserLoginDao.loginToAccount(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+                        String result = UserLoginDao.loginToAccount(email, password);
                         Intent intent = new Intent(getApplicationContext(), BusinessDashboard.class);
                         intent.putExtra("result", result);
                         startActivity(intent);

@@ -2,28 +2,33 @@ package com.example.replate.daos;
 
 import com.example.replate.adapters.NetworkAdapter;
 import com.example.replate.models.Business;
-import com.example.replate.models.Volunteer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class UserLoginDao {
     private static final String BASE_URL = "https://replate-backend-turcan.herokuapp.com/api/users/";
-
-    private static final String END_URL = "";
+    //private static final String END_URL = "";
     private static final String LOGIN_URL = "login";
 
 
     public static String createNewAccount(Business business) {
 
         JSONObject jsonObject = toJson(business);
-        return NetworkAdapter.httpRequest(BASE_URL + END_URL, NetworkAdapter.POST, jsonObject, null);
+        Map<String, String> header = new HashMap<>();
+        header.put("Content-Type", "application/json");
+        return NetworkAdapter.httpRequest(BASE_URL , NetworkAdapter.POST, jsonObject, header);
     }
 
     public static String loginToAccount(String email, String password){
 
         JSONObject jsonObject = toJson(email, password);
-        return NetworkAdapter.httpRequest(BASE_URL + LOGIN_URL + END_URL, NetworkAdapter.POST, jsonObject, null );
+        Map<String, String> header = new HashMap<>();
+        header.put("Content-Type", "application/json");
+        return NetworkAdapter.httpRequest(BASE_URL + LOGIN_URL, NetworkAdapter.POST, jsonObject, header );
     }
 
 

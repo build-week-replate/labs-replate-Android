@@ -45,10 +45,10 @@ public class BusinessSignup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (checkFields()) {
+                if (checkFields()) { //runs if all fields are valid
                     final Business business = createBusiness();
 
-                    new Thread(new Runnable() { //run this if all fields are valid
+                    new Thread(new Runnable() {
                         @Override
                         public void run() {
                             String result = UserLoginDao.createNewAccount(business);
