@@ -16,7 +16,7 @@ import android.widget.EditText;
 import com.example.replate.R;
 import com.example.replate.models.PickupRequest;
 
-public class SchedulePickup extends Fragment {
+public class SchedulePickupFragment extends Fragment {
 
     OnSubmitListener listener;
 

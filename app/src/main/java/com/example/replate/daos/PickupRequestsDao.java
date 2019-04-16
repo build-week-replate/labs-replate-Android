@@ -17,7 +17,7 @@ public class PickupRequestsDao {
 
     public static String getAllPickups(String token){
         Map<String, String> header = new HashMap();
-        header.put("token", token);
+        header.put("Authorization", token);
         header.put("Content-Type", "application/json");
         String result = NetworkAdapter.httpRequest(PICKUPS_URL, NetworkAdapter.GET, null, header);
         return result;

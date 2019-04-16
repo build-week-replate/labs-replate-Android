@@ -33,6 +33,8 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
+        viewHolder.textView.setText(pickupRequests.get(i).getName());
+
     }
 
     @Override

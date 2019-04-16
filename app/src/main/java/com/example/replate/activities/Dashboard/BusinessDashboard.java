@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.replate.R;
-import com.example.replate.activities.Dashboard.Fragments.SchedulePickup;
+import com.example.replate.activities.Dashboard.Fragments.SchedulePickupFragment;
 import com.example.replate.daos.PickupRequestsDao;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;
 
-public class BusinessDashboard extends AppCompatActivity implements SchedulePickup.OnSubmitListener {
+public class BusinessDashboard extends AppCompatActivity implements SchedulePickupFragment.OnSubmitListener {
 
 
     Button schedulePickup;
@@ -61,8 +61,8 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
     }
 
 
-    public static SchedulePickup newInstance(String username, String token) {
-        SchedulePickup fragment = new SchedulePickup();
+    public static SchedulePickupFragment newInstance(String username, String token) {
+        SchedulePickupFragment fragment = new SchedulePickupFragment();
         Bundle args = new Bundle();
         args.putString("username", username);
         args.putString("token", token);
