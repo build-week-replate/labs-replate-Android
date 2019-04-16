@@ -61,7 +61,7 @@ public class NetworkAdapter {
             }
 
             final int responseCode = connection.getResponseCode();
-            if (responseCode == HttpsURLConnection.HTTP_OK ) {
+            if (responseCode == HttpsURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_CREATED ) {
                 inputStream = connection.getInputStream();
                 if (inputStream != null) {
                     BufferedReader reader  = new BufferedReader(new InputStreamReader(inputStream));

@@ -26,7 +26,7 @@ public class PickupRequestsDao {
     public static String postPickupRequest(PickupRequest pickupRequest, String token){
         JSONObject jsonObject = toJson(pickupRequest);
         Map<String, String> header = new HashMap();
-        header.put("token", token);
+        header.put("Authorization", token);
         header.put("Content-Type", "application/json");
         String result = NetworkAdapter.httpRequest(PICKUPS_URL, NetworkAdapter.POST, jsonObject, header);
         return result;
