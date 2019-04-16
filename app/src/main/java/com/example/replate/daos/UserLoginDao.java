@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class UserLoginDao {
     private static final String BASE_URL = "https://replate-backend-turcan.herokuapp.com/api/users/";
-    //private static final String END_URL = "";
     private static final String LOGIN_URL = "login";
 
 

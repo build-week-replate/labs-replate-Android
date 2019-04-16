@@ -14,4 +14,24 @@ public class PickupRequest {
         this.instructions = instructions;
         this.notes = notes;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
 }
