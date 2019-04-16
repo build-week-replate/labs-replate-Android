@@ -30,7 +30,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
         ft.replace(R.id.frame_layout_volunteer_pickups, fragment);
         ft.commitNow();
 
-        fragment.getAllPickups();
+        //fragment.getAllPickups();
     }
 
     public static PickupDisplayFragment newInstance(String username, String token) {

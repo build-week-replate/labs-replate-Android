@@ -28,7 +28,7 @@ public class PickupDisplayFragment extends Fragment {
 
     String username;
     String token;
-    ArrayList<PickupRequest> pickupRequests;
+    ArrayList<PickupRequest> pickupRequests = new ArrayList<>();
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
 
@@ -52,9 +52,10 @@ public class PickupDisplayFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        ArrayList<PickupRequest> pickupRequests = new ArrayList<>();
         PickupRequest pickupRequest = new PickupRequest("test", "time", "date", "ins", "notes");
+        PickupRequest pickupRequest2 = new PickupRequest("test", "time", "date", "ins", "notes");
         pickupRequests.add(pickupRequest);
+        pickupRequests.add(pickupRequest2);
         recyclerView = view.findViewById(R.id.recycler_view_pickups_list);
 
         // use this setting to improve performance if you know that changes
@@ -68,6 +69,7 @@ public class PickupDisplayFragment extends Fragment {
         // specify an adapter (see also next example)
         mAdapter = new PickupsListAdapter(pickupRequests);
         recyclerView.setAdapter(mAdapter);
+        getAllPickups();
     }
 
     public void getAllPickups(){
@@ -75,20 +77,18 @@ public class PickupDisplayFragment extends Fragment {
             @Override
             public void run() {
                 String result = PickupRequestsDao.getAllPickups(token);
-                pickupRequests = new ArrayList<>();
                 try {
                     JSONArray results = new JSONArray(result);
                     for (int i = 0; i < results.length(); ++i){
                         JSONObject temp = results.getJSONObject(i);
                         pickupRequests.add(new PickupRequest(temp));
-                        mAdapter.notifyDataSetChanged();
                     }
-                    /*getActivity().runOnUiThread(new Runnable() {
+                    getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mAdapter.notifyDataSetChanged();
                         }
-                    });*/
+                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();
