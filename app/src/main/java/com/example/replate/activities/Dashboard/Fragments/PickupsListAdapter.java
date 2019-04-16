@@ -1,4 +1,4 @@
-package com.example.replate.activities.Fragments;
+package com.example.replate.activities.Dashboard.Fragments;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;

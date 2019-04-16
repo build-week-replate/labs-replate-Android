@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/fragment_volunteer_pickups"
-        android:name="com.example.replate.activities.Fragments.PickupDisplay"
+        android:name="com.example.replate.activities.Dashboard.Fragments.PickupDisplay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView8"
         android:layout_width="wrap_content"

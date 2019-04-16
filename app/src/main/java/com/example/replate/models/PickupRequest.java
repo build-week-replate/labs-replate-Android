@@ -1,20 +1,17 @@
 package com.example.replate.models;
 
 public class PickupRequest {
-    private Business business;
-    private String timeToPickup;
-    private String typeOfFood;
-    private long foodExpiration;
-    private long timePosted;
-    private Volunteer volunteer = null;
+    private String name;
+    private String time;
+    private String date;
+    private String instructions;
+    private String notes; //optional
 
-
-
-    public Volunteer getVolunteer() {
-        return volunteer;
-    }
-
-    public void setVolunteer(Volunteer volunteer) {
-        this.volunteer = volunteer;
+    public PickupRequest(String name, String time, String date, String instructions, String notes) {
+        this.name = name;
+        this.time = time;
+        this.date = date;
+        this.instructions = instructions;
+        this.notes = notes;
     }
 }

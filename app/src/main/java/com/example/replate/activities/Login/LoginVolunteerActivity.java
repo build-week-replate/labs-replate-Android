@@ -12,6 +12,10 @@ import com.example.replate.R;
 import com.example.replate.activities.Dashboard.VolunteerDashBoard;
 import com.example.replate.activities.Signup.VolunteerSignup;
 import com.example.replate.daos.UserLoginDao;
+import com.example.replate.models.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginVolunteerActivity extends AppCompatActivity {
 
@@ -40,8 +44,15 @@ public class LoginVolunteerActivity extends AppCompatActivity {
                     public void run() {
                         String result = UserLoginDao.loginToAccount(email, password);
                         Intent intent = new Intent(getApplicationContext(), VolunteerDashBoard.class);
-                        intent.putExtra("result", result);
-                        startActivity(intent);
+                        JSONObject jsonObject;
+                        try {
+                            jsonObject = new JSONObject(result);
+                            User user = new User(jsonObject);
+                            intent.putExtra("result", user);
+                            startActivity(intent);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }).start();
             }

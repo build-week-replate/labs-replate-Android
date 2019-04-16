@@ -16,7 +16,7 @@ public class User implements Serializable {
     private int id;
 
 
-    User(JSONObject jsonObject){
+    public User(JSONObject jsonObject){
         try {
             JSONObject temp = jsonObject.getJSONObject("user");
             name = temp.getString("name");
@@ -34,6 +34,10 @@ public class User implements Serializable {
 
     User() {
     }
+
+    public String getToken() { return token; }
+
+    public String getType() { return type; }
 
     public String getName() {
         return name;
