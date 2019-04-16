@@ -17,61 +17,61 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textview1"
+                android:id="@+id/textview_volunteer_signup_header"
                 android:text="New Account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/editText3"
+                app:layout_constraintBottom_toTopOf="@id/editText_volunteer_signup_name"
                 app:layout_constraintStart_toStartOf="parent"
                 />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editText_volunteer_signup_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Name"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/editText5"
+                app:layout_constraintBottom_toTopOf="@+id/editText_volunteer_signup_phone"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview1" />
+                app:layout_constraintTop_toBottomOf="@id/textview_volunteer_signup_header" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/editText_volunteer_signup_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Phone"
                 android:inputType="numberSigned"
-                app:layout_constraintBottom_toTopOf="@+id/editText4"
+                app:layout_constraintBottom_toTopOf="@+id/editText_volunteer_signup_email"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText3" />
+                app:layout_constraintTop_toBottomOf="@+id/editText_volunteer_signup_name" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/editText_volunteer_signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="E-mail"
                 android:inputType="textEmailAddress"
-                app:layout_constraintBottom_toTopOf="@+id/editText12"
+                app:layout_constraintBottom_toTopOf="@+id/editText_volunteer_signup_password1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText5" />
+                app:layout_constraintTop_toBottomOf="@+id/editText_volunteer_signup_phone" />
 
             <EditText
-                android:id="@+id/editText12"
+                android:id="@+id/editText_volunteer_signup_password1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                app:layout_constraintBottom_toTopOf="@+id/editText13"
+                app:layout_constraintBottom_toTopOf="@+id/editText_volunteer_signup_password2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText4" />
+                app:layout_constraintTop_toBottomOf="@+id/editText_volunteer_signup_email" />
 
             <EditText
-                android:id="@+id/editText13"
+                android:id="@+id/editText_volunteer_signup_password2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -79,13 +79,14 @@
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText12" />
+                app:layout_constraintTop_toBottomOf="@+id/editText_volunteer_signup_password1" />
 
             <Button
+                android:id="@+id/button_signup_volunteer_complete_signup"
                 android:text="Sign Up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/editText13"
+                app:layout_constraintTop_toBottomOf="@id/editText_volunteer_signup_password2"
                 app:layout_constraintStart_toStartOf="parent"
                 />
         </android.support.constraint.ConstraintLayout>

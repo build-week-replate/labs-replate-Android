@@ -23,7 +23,7 @@ public class BusinessSignup extends AppCompatActivity {
     EditText editTextAddress;
     EditText editTextOfficeName;
     EditText editTextOfficeEmail;
-    Button signup;
+    Button buttonSignup;
 
 
     @Override
@@ -39,9 +39,9 @@ public class BusinessSignup extends AppCompatActivity {
         editTextOfficeName = findViewById(R.id.editText_business_signup_office_name);
         editTextAddress = findViewById(R.id.editText_business_signup_office_address);
         editTextOfficeEmail = findViewById(R.id.editText_business_signup_email2);
-        signup = findViewById(R.id.button_signup_business_complete_signup);
+        buttonSignup = findViewById(R.id.button_signup_business_complete_signup);
 
-        signup.setOnClickListener(new View.OnClickListener() {
+        buttonSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -23,7 +23,7 @@ public class LoginBusinessActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_business);
+        setContentView(R.layout.activity_business_login);
 
         signupTextview = findViewById(R.id.text_view_sign_up_business_login);
         loginButton = findViewById(R.id.button_login_business_login);
@@ -46,11 +46,6 @@ public class LoginBusinessActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }).start();
-
-
-
-//                Intent intent = new Intent(getApplicationContext(), BusinessDashboard.class);
-//                startActivity(intent);
             }
         });
 
