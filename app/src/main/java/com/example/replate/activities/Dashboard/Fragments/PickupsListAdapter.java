@@ -48,6 +48,8 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
         viewHolder.textView.setText(pickupRequest.getName());
         viewHolder.textView2.setText(pickupRequest.getDate());
         viewHolder.textView3.setText(pickupRequest.getTime());
+        viewHolder.textView5.setText(pickupRequest.getOfficeName());
+        viewHolder.textView6.setText(pickupRequest.getOfficeAddress());
         if (pickupRequest.getInstructions().length() > 50) {
             viewHolder.textView4.setText(pickupRequest.getInstructions().substring(0, 50) + "...");
         }
@@ -75,6 +77,8 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
         TextView textView2;
         TextView textView3;
         TextView textView4;
+        TextView textView5;
+        TextView textView6;
         CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -83,6 +87,8 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
             textView2 = itemView.findViewById(R.id.recycler_single_element_text2);
             textView3 = itemView.findViewById(R.id.recycler_single_element_text3);
             textView4 = itemView.findViewById(R.id.recycler_single_element_text4);
+            textView5 = itemView.findViewById(R.id.recycler_single_element_text5);
+            textView6 = itemView.findViewById(R.id.recycler_single_element_text6);
             cardView = itemView.findViewById(R.id.recycler_cardView);
         }
     }

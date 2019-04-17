@@ -14,8 +14,13 @@ import com.example.replate.models.User;
 
 public class PickupDetail extends AppCompatActivity {
 
+
+
+    EditText editTextPickupName;
     EditText editTextPickupDate;
     EditText editTextPickupTime;
+    EditText editTextPickupOfficeName;
+    EditText editTextPickupOfficeAddress;
     EditText editTextPickupInstructions;
     EditText editTextPickupNotes;
     User user;
@@ -34,8 +39,11 @@ public class PickupDetail extends AppCompatActivity {
         pickupRequest = (PickupRequest)intent.getSerializableExtra("result");
         user = (User)intent.getSerializableExtra("user");
 
+        editTextPickupName = findViewById(R.id.editText_detail_schedule_pickup_name);
         editTextPickupDate = findViewById(R.id.editText_detail_schedule_pickup_date);
         editTextPickupTime = findViewById(R.id.editText_detail_schedule_pickup_time);
+        editTextPickupOfficeName = findViewById(R.id.editText_detail_schedule_pickup_office_name);
+        editTextPickupOfficeAddress = findViewById(R.id.editText_detail_schedule_pickup_office_address);
         editTextPickupInstructions = findViewById(R.id.editText_detail_schedule_pickup_instructions);
         editTextPickupNotes = findViewById(R.id.editText_detail_schedule_pickup_additional_notes);
         buttonSubmitChanges = findViewById(R.id.button_detail_schedule_pickup_submit_changes);
@@ -43,8 +51,11 @@ public class PickupDetail extends AppCompatActivity {
         buttonMarkComplete = findViewById(R.id.button_detail_schedule_pickup_complete_pickup);
         buttonDelete = findViewById(R.id.button_detail_schedule_pickup_delete_pickup);
 
+        editTextPickupName.setText(pickupRequest.getName());
         editTextPickupDate.setText(pickupRequest.getDate());
         editTextPickupTime.setText(pickupRequest.getTime());
+        editTextPickupOfficeName.setText(pickupRequest.getOfficeName());
+        editTextPickupOfficeAddress.setText(pickupRequest.getOfficeAddress());
         editTextPickupInstructions.setText(pickupRequest.getInstructions());
         editTextPickupNotes.setText(pickupRequest.getNotes());
 

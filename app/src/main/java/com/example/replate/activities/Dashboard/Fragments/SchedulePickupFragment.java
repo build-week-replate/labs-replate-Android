@@ -18,11 +18,9 @@ import android.widget.SpinnerAdapter;
 
 import com.example.replate.R;
 import com.example.replate.daos.OfficeLocationsDao;
-import com.example.replate.daos.PickupRequestsDao;
 import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;
-
 import java.util.ArrayList;
 
 public class SchedulePickupFragment extends Fragment {
@@ -34,7 +32,6 @@ public class SchedulePickupFragment extends Fragment {
     EditText editTextPickupInstructions;
     EditText editTextPickupNotes;
     Spinner spinnerLocation;
-    SpinnerAdapter spinnerAdapter;
     String username;
     User user;
     ArrayList<OfficeLocation> locations;
@@ -67,12 +64,16 @@ public class SchedulePickupFragment extends Fragment {
             @Override
             public void run() {
                 locations = OfficeLocationsDao.getBusinessLocationsList(user);
+                final ArrayList<String> locationNames = new ArrayList<>(locations.size());
+                for (OfficeLocation officeLocation: locations) {
+                    locationNames.add(officeLocation.getOfficeName() + " - " + officeLocation.getOfficeAddress());
+                }
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ArrayAdapter<OfficeLocation> dataAdapter = new ArrayAdapter<>(view.getContext(),
-                                android.R.layout.simple_spinner_item, locations);
-                        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(view.getContext(),
+                                R.layout.spinner_item, locationNames);
+                        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
                         spinnerLocation.setAdapter(dataAdapter);
                     }
                 });
@@ -87,7 +88,8 @@ public class SchedulePickupFragment extends Fragment {
                        editTextPickupTime.getText().toString(),
                        editTextPickupDate.getText().toString(),
                        editTextPickupInstructions.getText().toString(),
-                       editTextPickupNotes.getText().toString()
+                       editTextPickupNotes.getText().toString(),
+                       spinnerLocation.getSelectedItemPosition()+1 //+1 - the backend doesn't have an element 0
                );
 
                 submitPickupRequest(v, pickupRequest, user.getToken());

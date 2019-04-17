@@ -44,6 +44,7 @@ public class PickupRequestsDao {
             jsonObject.put("pickup_time", pickupRequest.getTime());
             jsonObject.put("pickup_comment", pickupRequest.getInstructions());
             jsonObject.put("pickup_additional_comment", pickupRequest.getNotes());
+            jsonObject.put("location_id", pickupRequest.getLocationId());
             return jsonObject;
         } catch (JSONException e) {
             e.printStackTrace();

@@ -58,6 +58,7 @@
             app:layout_constraintTop_toBottomOf="@id/editText_schedule_pickup_instructions" />
 
         <Spinner
+            android:layout_marginTop="5dp"
             android:id="@+id/spinner_schedule_pickup_location"
             app:layout_constraintTop_toBottomOf="@id/editText_schedule_pickup_additional_notes"
             app:layout_constraintBottom_toTopOf="@id/button_detail_schedule_pickup_submit_order"
@@ -67,6 +68,7 @@
         </Spinner>
 
         <Button
+            android:layout_marginTop="10dp"
             android:id="@+id/button_detail_schedule_pickup_submit_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
