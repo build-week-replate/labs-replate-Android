@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.example.replate.R;
 import com.example.replate.models.PickupRequest;
+import com.example.replate.models.User;
 
 public class PickupDetail extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class PickupDetail extends AppCompatActivity {
     EditText editTextPickupTime;
     EditText editTextPickupInstructions;
     EditText editTextPickupNotes;
-    String token;
+    User user;
     PickupRequest pickupRequest;
     Button buttonSubmitChanges;
     Button buttonAcceptPickup;
@@ -27,18 +28,21 @@ public class PickupDetail extends AppCompatActivity {
 
         Intent intent = getIntent();
         pickupRequest = (PickupRequest)intent.getSerializableExtra("result");
-        token = intent.getStringExtra("token");
+        user = (User)intent.getSerializableExtra("user");
 
         editTextPickupDate = findViewById(R.id.editText_detail_schedule_pickup_date);
         editTextPickupTime = findViewById(R.id.editText_detail_schedule_pickup_time);
         editTextPickupInstructions = findViewById(R.id.editText_detail_schedule_pickup_instructions);
         editTextPickupNotes = findViewById(R.id.editText_detail_schedule_pickup_additional_notes);
         buttonSubmitChanges = findViewById(R.id.button_detail_schedule_pickup_submit_changes);
+        buttonAcceptPickup = findViewById(R.id.button_detail_schedule_pickup_accept_pickup);
 
         editTextPickupDate.setText(pickupRequest.getDate());
         editTextPickupTime.setText(pickupRequest.getTime());
         editTextPickupInstructions.setText(pickupRequest.getInstructions());
         editTextPickupNotes.setText(pickupRequest.getNotes());
+
+
 
 
 

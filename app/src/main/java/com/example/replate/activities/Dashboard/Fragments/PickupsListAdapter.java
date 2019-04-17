@@ -12,16 +12,17 @@ import android.widget.TextView;
 import com.example.replate.R;
 import com.example.replate.activities.Dashboard.PickupDetail;
 import com.example.replate.models.PickupRequest;
+import com.example.replate.models.User;
 
 import java.util.ArrayList;
 
 public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.ViewHolder> {
     private ArrayList<PickupRequest> pickupRequests;
-    private String token;
+    private User user;
 
-    public PickupsListAdapter(ArrayList<PickupRequest> myDataset, String token) {
+    public PickupsListAdapter(ArrayList<PickupRequest> myDataset, User user) {
         this.pickupRequests = myDataset;
-        this.token = token;
+        this.user = user;
     }
 
     @NonNull
@@ -44,7 +45,7 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PickupDetail.class);
-                intent.putExtra("token", token);
+                intent.putExtra("user", user);
                 intent.putExtra("result", pickupRequest);
                 v.getContext().startActivity(intent);
             }

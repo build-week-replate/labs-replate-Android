@@ -29,7 +29,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
         final User user = (User) intent.getSerializableExtra("result");
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        fragment = newInstance(user.getName(), user.getToken());
+        fragment = newInstance(user.getName(), user);
         ft.replace(R.id.frame_layout_volunteer_pickups, fragment);
         ft.commitNow();
         fragment.getAllPickups();
@@ -38,7 +38,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance(user.getName(), user.getToken());
+                fragment = newInstance(user.getName(), user);
                 ft.replace(R.id.frame_layout_volunteer_pickups, fragment);
                 ft.commitNow();
                 fragment.getVolunteerPickups(user.getId());
@@ -46,11 +46,11 @@ public class VolunteerDashBoard extends AppCompatActivity {
         });
     }
 
-    public static PickupDisplayFragment newInstance(String username, String token) {
+    public static PickupDisplayFragment newInstance(String username, User user) {
         PickupDisplayFragment fragment = new PickupDisplayFragment();
         Bundle args = new Bundle();
         args.putString("username", username);
-        args.putString("token", token);
+        args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }

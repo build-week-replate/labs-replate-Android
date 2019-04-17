@@ -16,6 +16,7 @@ import com.example.replate.R;
 import com.example.replate.adapters.NetworkAdapter;
 import com.example.replate.daos.PickupRequestsDao;
 import com.example.replate.models.PickupRequest;
+import com.example.replate.models.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class PickupDisplayFragment extends Fragment {
 
     String username;
-    String token;
+    User user;
     ArrayList<PickupRequest> pickupRequests = new ArrayList<>();
     RecyclerView recyclerView;
     RecyclerView.Adapter mAdapter;
@@ -39,7 +40,7 @@ public class PickupDisplayFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         username = getArguments().getString("username", null);
-        token = getArguments().getString("token", null);
+        user = (User)getArguments().getSerializable("user");
         super.onAttach(context);
     }
 
@@ -63,7 +64,7 @@ public class PickupDisplayFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new PickupsListAdapter(pickupRequests, token);
+        mAdapter = new PickupsListAdapter(pickupRequests, user);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -71,7 +72,7 @@ public class PickupDisplayFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String result = PickupRequestsDao.getAllPickups(token);
+                String result = PickupRequestsDao.getAllPickups(user.getToken());
                 try {
                     JSONArray results = new JSONArray(result);
                     for (int i = 0; i < results.length(); ++i) {
@@ -98,7 +99,7 @@ public class PickupDisplayFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String result = PickupRequestsDao.getAllPickups(token);
+                String result = PickupRequestsDao.getAllPickups(user.getToken());
                 try {
                     JSONArray results = new JSONArray(result);
                     for (int i = 0; i < results.length(); ++i) {
@@ -127,7 +128,7 @@ public class PickupDisplayFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                String result = PickupRequestsDao.getAllPickups(token);
+                String result = PickupRequestsDao.getAllPickups(user.getToken());
                 try {
                     JSONArray results = new JSONArray(result);
                     for (int i = 0; i < results.length(); ++i) {

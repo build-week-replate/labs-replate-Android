@@ -50,7 +50,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                PickupDisplayFragment pickupDisplayFragment = newInstance2(user.getName(), user.getToken());
+                PickupDisplayFragment pickupDisplayFragment = newInstance2(user.getName(), user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, pickupDisplayFragment);
                 ft.commitNow();
                 buttonSchedulePickup.setVisibility(View.INVISIBLE);
@@ -85,11 +85,11 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         return fragment;
     }
 
-    public static PickupDisplayFragment newInstance2(String username, String token) {
+    public static PickupDisplayFragment newInstance2(String username, User user) {
         PickupDisplayFragment fragment = new PickupDisplayFragment();
         Bundle args = new Bundle();
         args.putString("username", username);
-        args.putString("token", token);
+        args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
