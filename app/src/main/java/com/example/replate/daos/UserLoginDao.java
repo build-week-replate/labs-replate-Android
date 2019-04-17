@@ -14,7 +14,6 @@ import java.util.Map;
 public class UserLoginDao {
     private static final String BASE_URL = "https://replate-backend-turcan.herokuapp.com/api/users/";
     private static final String LOGIN_URL = "login";
-    private static final String LOCATION_URL = "https://replate-backend-turcan.herokuapp.com/api/locations/";
 
 
     public static String createNewAccount(User user) {
@@ -25,13 +24,7 @@ public class UserLoginDao {
         return NetworkAdapter.httpRequest(BASE_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
-    public static String createNewLocation(OfficeLocation officeLocation, String token) {
-        JSONObject jsonObject = locationToJson(officeLocation);
-        Map<String, String> header = new HashMap<>();
-        header.put("Content-Type", "application/json");
-        header.put("Authorization", token);
-        return NetworkAdapter.httpRequest(LOCATION_URL, NetworkAdapter.POST, jsonObject, header);
-    }
+
 
     public static String loginToAccount(String email, String password) {
 
@@ -42,21 +35,7 @@ public class UserLoginDao {
     }
 
 
-    private static JSONObject locationToJson(OfficeLocation officeLocation) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder
-                .append("{\"office_name\":\"" + officeLocation.getOfficeName() + "\",")
-                .append("\"office_address\":\"" + officeLocation.getOfficeAddress() + "\",")
-                .append("\"office_email\":\"" + officeLocation.getOfficeEmail() + "\"");
-        stringBuilder.append("}");
 
-        try {
-            return new JSONObject(stringBuilder.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     private static JSONObject userToJson(User user) { //converts user object to json
         String type = "company";

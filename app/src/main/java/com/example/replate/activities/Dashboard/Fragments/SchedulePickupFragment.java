@@ -10,11 +10,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 import com.example.replate.R;
+import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
+
+import java.util.ArrayList;
 
 public class SchedulePickupFragment extends Fragment {
 
@@ -24,8 +30,11 @@ public class SchedulePickupFragment extends Fragment {
     EditText editTextPickupTime;
     EditText editTextPickupInstructions;
     EditText editTextPickupNotes;
+    Spinner spinnerLocation;
+    SpinnerAdapter spinnerAdapter;
     String username;
     String token;
+    ArrayList<OfficeLocation> locations;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,20 @@ public class SchedulePickupFragment extends Fragment {
         editTextPickupTime = view.findViewById(R.id.editText_schedule_pickup_time);
         editTextPickupInstructions = view.findViewById(R.id.editText_schedule_pickup_instructions);
         editTextPickupNotes = view.findViewById(R.id.editText_schedule_pickup_additional_notes);
+        spinnerLocation = view.findViewById(R.id.spinner_schedule_pickup_location);
+        locations = new ArrayList<>();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        }).start();
+
+        ArrayAdapter<OfficeLocation> dataAdapter = new ArrayAdapter<>(view.getContext(),
+                android.R.layout.simple_spinner_item, locations);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLocation.setAdapter(dataAdapter);
 
 
         buttonSchedulePickup.setOnClickListener(new View.OnClickListener() {

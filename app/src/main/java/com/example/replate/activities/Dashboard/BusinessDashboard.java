@@ -14,6 +14,7 @@ import com.example.replate.R;
 import com.example.replate.activities.Dashboard.Fragments.AddLocationFragment;
 import com.example.replate.activities.Dashboard.Fragments.PickupsDisplayFragment;
 import com.example.replate.activities.Dashboard.Fragments.SchedulePickupFragment;
+import com.example.replate.daos.OfficeLocationsDao;
 import com.example.replate.daos.PickupRequestsDao;
 import com.example.replate.daos.UserLoginDao;
 import com.example.replate.models.OfficeLocation;
@@ -103,7 +104,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         new Thread(new Runnable() {
             @Override
             public void run() {
-                UserLoginDao.createNewLocation(officeLocation, token);
+                OfficeLocationsDao.createNewLocation(officeLocation, token);
             }
         }).start();
 

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.activities.Dashboard.BusinessDashboard;
+import com.example.replate.daos.OfficeLocationsDao;
 import com.example.replate.daos.UserLoginDao;
 import com.example.replate.models.Business;
 import com.example.replate.models.OfficeLocation;
@@ -66,7 +67,7 @@ public class BusinessSignup extends AppCompatActivity {
                                 new Thread(new Runnable() { //this thread will add the company location in the background
                                     @Override
                                     public void run() {
-                                        UserLoginDao.createNewLocation(officeLocation, user.getToken());
+                                        OfficeLocationsDao.createNewLocation(officeLocation, user.getToken());
                                     }
                                 }).start();
                                 intent.putExtra("result", user);
