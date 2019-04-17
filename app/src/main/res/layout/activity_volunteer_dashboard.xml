@@ -30,7 +30,6 @@
     <Button
         android:id="@+id/button_volunteer_dashboard_my_pickups"
         android:text="My Pickups"
-        android:backgroundTint="@color/colorPrimaryLightGreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

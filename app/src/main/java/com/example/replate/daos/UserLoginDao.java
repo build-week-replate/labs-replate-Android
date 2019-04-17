@@ -43,10 +43,6 @@ public class UserLoginDao {
                 .append("\"phone\":\"" + user.getPhoneNumber() + "\",")
                 .append("\"email\":\"" + user.getEmailAddress() + "\",")
                 .append("\"password\":\"" + user.getPassword() + "\"");
-//                .append("\"address\":\"" + business.getAddress() + "\",")
-//                .append("\"officeName\":\"" + business.getOfficeName());
-//                if (business.getOfficeEmail()!=null)
-//                    stringBuilder.append("\"," + "\"officeEmail\":" + business.getOfficeEmail());
         stringBuilder.append("}");
 
         try {

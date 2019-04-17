@@ -42,6 +42,10 @@ public class PickupDetail extends AppCompatActivity {
         editTextPickupInstructions.setText(pickupRequest.getInstructions());
         editTextPickupNotes.setText(pickupRequest.getNotes());
 
+        if (user.getType().equals("volunteer")) {
+
+        }
+
 
 
 

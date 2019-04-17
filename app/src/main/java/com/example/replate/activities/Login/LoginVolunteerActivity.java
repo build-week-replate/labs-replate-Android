@@ -1,12 +1,15 @@
 package com.example.replate.activities.Login;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.activities.Dashboard.VolunteerDashBoard;
@@ -23,11 +26,13 @@ public class LoginVolunteerActivity extends AppCompatActivity {
     TextView signupTextview;
     EditText editTextEmail;
     EditText editTextPassword;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_login);
+        context = this;
 
         loginButton = findViewById(R.id.button_login_volunteer_login);
         signupTextview = findViewById(R.id.text_view_sign_up_volunteer_login);
@@ -48,8 +53,17 @@ public class LoginVolunteerActivity extends AppCompatActivity {
                         try {
                             jsonObject = new JSONObject(result);
                             User user = new User(jsonObject);
-                            intent.putExtra("result", user);
-                            startActivity(intent);
+                            if (user.getType().equals("company")) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "You are in the wrong login screen", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            } else {
+                                intent.putExtra("result", user);
+                                startActivity(intent);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
