@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class PickupDisplayFragment extends Fragment {
+public class PickupsDisplayFragment extends Fragment {
 
     String username;
     User user;
@@ -33,7 +33,7 @@ public class PickupDisplayFragment extends Fragment {
     RecyclerView.Adapter mAdapter;
 
 
-    public PickupDisplayFragment() {
+    public PickupsDisplayFragment() {
     }
 
     @Override
@@ -149,8 +149,6 @@ public class PickupDisplayFragment extends Fragment {
                 }
             }
         }).start();
-
-
     }
 
 }

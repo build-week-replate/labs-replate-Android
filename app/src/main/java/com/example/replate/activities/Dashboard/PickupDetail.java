@@ -23,6 +23,7 @@ public class PickupDetail extends AppCompatActivity {
     Button buttonSubmitChanges;
     Button buttonAcceptPickup;
     Button buttonMarkComplete;
+    Button buttonDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class PickupDetail extends AppCompatActivity {
         buttonSubmitChanges = findViewById(R.id.button_detail_schedule_pickup_submit_changes);
         buttonAcceptPickup = findViewById(R.id.button_detail_schedule_pickup_accept_pickup);
         buttonMarkComplete = findViewById(R.id.button_detail_schedule_pickup_complete_pickup);
+        buttonDelete = findViewById(R.id.button_detail_schedule_pickup_delete_pickup);
 
         editTextPickupDate.setText(pickupRequest.getDate());
         editTextPickupTime.setText(pickupRequest.getTime());
@@ -50,11 +52,13 @@ public class PickupDetail extends AppCompatActivity {
             if (user.getId() == pickupRequest.getVolunteer_id()) { //volunteer and accepted pickup
                 buttonMarkComplete.setVisibility(View.VISIBLE);
                 buttonSubmitChanges.setVisibility(View.GONE);
+                buttonDelete.setVisibility(View.GONE);
             } else {
                 buttonAcceptPickup.setVisibility(View.VISIBLE); //volunteer not accepted pickup
                 buttonSubmitChanges.setVisibility(View.GONE);
+                buttonDelete.setVisibility(View.GONE);
             }
-        }
+        } //else it's prepped for a business' view
 
         buttonSubmitChanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +79,19 @@ public class PickupDetail extends AppCompatActivity {
                     }
                 }).start();
 
+                finish();
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        PickupRequestsDao.deletePickup(pickupRequest, user.getToken());
+                    }
+                }).start();
                 finish();
             }
         });

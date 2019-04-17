@@ -8,12 +8,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.replate.R;
-import com.example.replate.activities.Dashboard.Fragments.PickupDisplayFragment;
+import com.example.replate.activities.Dashboard.Fragments.PickupsDisplayFragment;
 import com.example.replate.models.User;
 
 public class VolunteerDashBoard extends AppCompatActivity {
 
-    PickupDisplayFragment fragment;
+    PickupsDisplayFragment fragment;
     Button buttonMyPickups;
     Button buttonAllPickups;
     User user;
@@ -64,8 +64,8 @@ public class VolunteerDashBoard extends AppCompatActivity {
         });
     }
 
-    public static PickupDisplayFragment newInstance(String username, User user) {
-        PickupDisplayFragment fragment = new PickupDisplayFragment();
+    public static PickupsDisplayFragment newInstance(String username, User user) {
+        PickupsDisplayFragment fragment = new PickupsDisplayFragment();
         Bundle args = new Bundle();
         args.putString("username", username);
         args.putSerializable("user", user);

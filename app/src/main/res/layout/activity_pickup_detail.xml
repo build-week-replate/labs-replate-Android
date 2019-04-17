@@ -87,6 +87,15 @@
             app:layout_constraintStart_toStartOf="@id/editText_detail_schedule_pickup_date"
             app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />
 
+        <Button
+            android:id="@+id/button_detail_schedule_pickup_delete_pickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove this Pickup"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/editText_detail_schedule_pickup_date"
+            app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />
+
     </android.support.constraint.ConstraintLayout>
 
 

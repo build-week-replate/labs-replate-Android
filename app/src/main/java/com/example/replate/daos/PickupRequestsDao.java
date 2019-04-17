@@ -68,4 +68,14 @@ public class PickupRequestsDao {
         String result = NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()) + TAKE_URL, NetworkAdapter.PATCH, jsonObject, header);
         return result;
     }
+
+    public static String deletePickup(PickupRequest pickupRequest, String token) {
+        JSONObject jsonObject = toJson(pickupRequest);
+        Map<String, String> header = new HashMap();
+        header.put("Authorization", token);
+        header.put("Content-Type", "application/json");
+        String result = NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()), NetworkAdapter.DELETE, jsonObject, header);
+        return result;
+    }
+
 }

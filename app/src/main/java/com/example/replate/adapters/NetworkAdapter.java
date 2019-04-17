@@ -52,7 +52,7 @@ public class NetworkAdapter {
                     connection.setRequestProperty(property.getKey(), property.getValue());
                 }
             }
-            if((requestMethod.equals(POST) || requestMethod.equals(PUT) || requestMethod.equals(PATCH)) && requestBody != null) {
+            if(requestBody != null) {
                 connection.setDoInput(true);
                 final OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(requestBody.toString().getBytes());

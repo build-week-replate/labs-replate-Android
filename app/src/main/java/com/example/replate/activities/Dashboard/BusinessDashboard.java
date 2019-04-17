@@ -1,6 +1,8 @@
 package com.example.replate.activities.Dashboard;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.replate.R;
-import com.example.replate.activities.Dashboard.Fragments.PickupDisplayFragment;
+import com.example.replate.activities.Dashboard.Fragments.PickupsDisplayFragment;
 import com.example.replate.activities.Dashboard.Fragments.SchedulePickupFragment;
 import com.example.replate.daos.PickupRequestsDao;
 import com.example.replate.models.PickupRequest;
@@ -20,6 +22,8 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
 
     Button buttonSchedulePickup;
     Button buttonMyPickups;
+    ConstraintLayout constraintLayout;
+    ConstraintSet constraintSet;
     Fragment fragment;
     User user;
 
@@ -33,6 +37,10 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
 
         buttonSchedulePickup = findViewById(R.id.button_business_dashboard_schedule_pickup);
         buttonMyPickups = findViewById(R.id.button_business_dashboard_my_scheduled_pickups);
+        constraintLayout = findViewById(R.id.constraint_layout_business_dashboard_parent);
+        constraintSet = new ConstraintSet();
+        constraintSet.clone(constraintLayout);
+
 
         buttonSchedulePickup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +50,6 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
                 fragment = newInstance(user.getName(), user.getToken());
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
-                buttonSchedulePickup.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -50,11 +57,10 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                PickupDisplayFragment pickupDisplayFragment = newInstance2(user.getName(), user);
-                ft.replace(R.id.frame_layout_business_dashboard_center, pickupDisplayFragment);
+                PickupsDisplayFragment pickupsDisplayFragment = newInstance2(user.getName(), user);
+                ft.replace(R.id.frame_layout_business_dashboard_center, pickupsDisplayFragment);
                 ft.commitNow();
-                buttonSchedulePickup.setVisibility(View.INVISIBLE);
-                pickupDisplayFragment.getCompanyPickups(user.getId());
+                pickupsDisplayFragment.getCompanyPickups(user.getId());
             }
         });
 
@@ -66,7 +72,6 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.hide(fragment);
         ft.commit();
-        buttonSchedulePickup.setVisibility(View.VISIBLE);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -85,8 +90,8 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         return fragment;
     }
 
-    public static PickupDisplayFragment newInstance2(String username, User user) {
-        PickupDisplayFragment fragment = new PickupDisplayFragment();
+    public static PickupsDisplayFragment newInstance2(String username, User user) {
+        PickupsDisplayFragment fragment = new PickupsDisplayFragment();
         Bundle args = new Bundle();
         args.putString("username", username);
         args.putSerializable("user", user);
