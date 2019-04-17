@@ -66,7 +66,7 @@ public class BusinessSignup extends AppCompatActivity {
                                 new Thread(new Runnable() { //this thread will add the company location in the background
                                     @Override
                                     public void run() {
-                                        UserLoginDao.createNewLocation(user, officeLocation);
+                                        UserLoginDao.createNewLocation(officeLocation, user.getToken());
                                     }
                                 }).start();
                                 intent.putExtra("result", user);
@@ -115,8 +115,8 @@ public class BusinessSignup extends AppCompatActivity {
     private OfficeLocation createLocation() {
 
         return new OfficeLocation(
-                editTextOfficeAddress.getText().toString(),
                 editTextOfficeName.getText().toString(),
+                editTextOfficeAddress.getText().toString(),
                 editTextOfficeEmail.getText().toString());
     }
 }

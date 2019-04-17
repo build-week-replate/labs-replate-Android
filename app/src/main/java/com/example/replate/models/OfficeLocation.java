@@ -6,7 +6,7 @@ public class OfficeLocation {
     private String officeName;
     private String officeEmail;
 
-    public OfficeLocation(String officeAddress, String officeName, String officeEmail) {
+    public OfficeLocation(String officeName, String officeAddress,  String officeEmail) {
         this.officeAddress = officeAddress;
         this.officeName = officeName;
         this.officeEmail = officeEmail;

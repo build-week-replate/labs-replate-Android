@@ -25,11 +25,11 @@ public class UserLoginDao {
         return NetworkAdapter.httpRequest(BASE_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
-    public static String createNewLocation(User user, OfficeLocation officeLocation) {
+    public static String createNewLocation(OfficeLocation officeLocation, String token) {
         JSONObject jsonObject = locationToJson(officeLocation);
         Map<String, String> header = new HashMap<>();
         header.put("Content-Type", "application/json");
-        header.put("Authorization", user.getToken());
+        header.put("Authorization", token);
         return NetworkAdapter.httpRequest(LOCATION_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
@@ -45,7 +45,7 @@ public class UserLoginDao {
     private static JSONObject locationToJson(OfficeLocation officeLocation) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
-                .append("\"office_name\":\"" + officeLocation.getOfficeName() + "\",")
+                .append("{\"office_name\":\"" + officeLocation.getOfficeName() + "\",")
                 .append("\"office_address\":\"" + officeLocation.getOfficeAddress() + "\",")
                 .append("\"office_email\":\"" + officeLocation.getOfficeEmail() + "\"");
         stringBuilder.append("}");
