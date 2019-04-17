@@ -63,7 +63,7 @@ public class PickupDisplayFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new PickupsListAdapter(pickupRequests);
+        mAdapter = new PickupsListAdapter(pickupRequests, token);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -152,4 +152,5 @@ public class PickupDisplayFragment extends Fragment {
 
 
     }
+
 }

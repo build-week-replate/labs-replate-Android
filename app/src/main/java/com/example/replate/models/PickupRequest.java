@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class PickupRequest {
+import java.io.Serializable;
+
+public class PickupRequest implements Serializable {
     private String name;
     private String time;
     private String date;

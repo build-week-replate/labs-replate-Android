@@ -43,7 +43,7 @@ public class SchedulePickupFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button buttonSchedulePickup = view.findViewById(R.id.button_schedule_pickup_submit_order);
+        Button buttonSchedulePickup = view.findViewById(R.id.button_detail_schedule_pickup_submit_order);
         editTextPickupDate = view.findViewById(R.id.editText_schedule_pickup_date);
         editTextPickupTime = view.findViewById(R.id.editText_schedule_pickup_time);
         editTextPickupInstructions = view.findViewById(R.id.editText_schedule_pickup_instructions);

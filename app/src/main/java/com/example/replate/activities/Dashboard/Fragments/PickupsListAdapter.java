@@ -1,5 +1,6 @@
 package com.example.replate.activities.Dashboard.Fragments;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,21 +10,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.replate.R;
+import com.example.replate.activities.Dashboard.PickupDetail;
 import com.example.replate.models.PickupRequest;
 
 import java.util.ArrayList;
 
-public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.ViewHolder>  {
+public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.ViewHolder> {
     private ArrayList<PickupRequest> pickupRequests;
+    private String token;
 
-    public PickupsListAdapter(ArrayList<PickupRequest> myDataset) {
-        pickupRequests = myDataset;
+    public PickupsListAdapter(ArrayList<PickupRequest> myDataset, String token) {
+        this.pickupRequests = myDataset;
+        this.token = token;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View v =  LayoutInflater.from(parent.getContext())
+        View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_single_element, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
@@ -33,8 +37,18 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
-        viewHolder.textView.setText(pickupRequests.get(i).getName());
+        final PickupRequest pickupRequest = pickupRequests.get(i);
+        viewHolder.textView.setText(pickupRequest.getName() + ", " + pickupRequest.getDate() + ", " + pickupRequest.getTime() + ", " + pickupRequest.getInstructions() + ", " + pickupRequest.getNotes());
 
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), PickupDetail.class);
+                intent.putExtra("token", token);
+                intent.putExtra("result", pickupRequest);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -45,6 +59,7 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         CardView cardView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.recycler_single_element_text1);
@@ -52,3 +67,4 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
         }
     }
 }
+
