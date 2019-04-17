@@ -17,8 +17,11 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import com.example.replate.R;
+import com.example.replate.daos.OfficeLocationsDao;
+import com.example.replate.daos.PickupRequestsDao;
 import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
+import com.example.replate.models.User;
 
 import java.util.ArrayList;
 
@@ -33,14 +36,14 @@ public class SchedulePickupFragment extends Fragment {
     Spinner spinnerLocation;
     SpinnerAdapter spinnerAdapter;
     String username;
-    String token;
+    User user;
     ArrayList<OfficeLocation> locations;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         username = getArguments().getString("username", null);
-        token = getArguments().getString("token", null);
+        user = (User)getArguments().getSerializable("user");
     }
 
     @Override
@@ -50,7 +53,7 @@ public class SchedulePickupFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_schedule_pickup, container, false);
     }
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button buttonSchedulePickup = view.findViewById(R.id.button_detail_schedule_pickup_submit_order);
         editTextPickupDate = view.findViewById(R.id.editText_schedule_pickup_date);
@@ -63,15 +66,18 @@ public class SchedulePickupFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                locations = OfficeLocationsDao.getBusinessLocationsList(user);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayAdapter<OfficeLocation> dataAdapter = new ArrayAdapter<>(view.getContext(),
+                                android.R.layout.simple_spinner_item, locations);
+                        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spinnerLocation.setAdapter(dataAdapter);
+                    }
+                });
             }
         }).start();
-
-        ArrayAdapter<OfficeLocation> dataAdapter = new ArrayAdapter<>(view.getContext(),
-                android.R.layout.simple_spinner_item, locations);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerLocation.setAdapter(dataAdapter);
-
 
         buttonSchedulePickup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +90,7 @@ public class SchedulePickupFragment extends Fragment {
                        editTextPickupNotes.getText().toString()
                );
 
-                submitPickupRequest(v, pickupRequest, token);
+                submitPickupRequest(v, pickupRequest, user.getToken());
             }
         });
     }

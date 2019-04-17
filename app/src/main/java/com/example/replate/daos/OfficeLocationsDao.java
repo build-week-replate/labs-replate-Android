@@ -2,6 +2,7 @@ package com.example.replate.daos;
 
 import com.example.replate.adapters.NetworkAdapter;
 import com.example.replate.models.OfficeLocation;
+import com.example.replate.models.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,8 +25,8 @@ public class OfficeLocationsDao {
         return NetworkAdapter.httpRequest(LOCATION_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
-    public ArrayList<OfficeLocation>getBusinessLocationsList(String token) {
-        String result = getAllLocations(token);
+    public static ArrayList<OfficeLocation> getBusinessLocationsList(User user) {
+        String result = getAllLocations(user);
         ArrayList<OfficeLocation> locations = new ArrayList<>();
         try {
             JSONArray jsonArrayResult = new JSONArray(result);
@@ -40,11 +41,11 @@ public class OfficeLocationsDao {
         }
     }
 
-    private static String getAllLocations(String token){
+    private static String getAllLocations(User user){
         Map<String, String> header = new HashMap();
-        header.put("Authorization", token);
+        header.put("Authorization", user.getToken());
         header.put("Content-Type", "application/json");
-        String result = NetworkAdapter.httpRequest(LOCATION_URL, NetworkAdapter.GET, null, header);
+        String result = NetworkAdapter.httpRequest(LOCATION_URL + user.getId(), NetworkAdapter.GET, null, header);
         return result;
     }
 

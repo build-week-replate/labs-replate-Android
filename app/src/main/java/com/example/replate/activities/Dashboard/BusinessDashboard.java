@@ -51,7 +51,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance3(user.getName(), user.getToken());
+                fragment = newInstance3(user.getName(), user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
             }
@@ -63,7 +63,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             public void onClick(View v) {
                 // Begin the transaction
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance(user.getName(), user.getToken());
+                fragment = newInstance(user.getName(), user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
             }
@@ -111,11 +111,11 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
     }
 
 
-    public static SchedulePickupFragment newInstance(String username, String token) {
+    public static SchedulePickupFragment newInstance(String username, User user) {
         SchedulePickupFragment fragment = new SchedulePickupFragment();
         Bundle args = new Bundle();
         args.putString("username", username);
-        args.putString("token", token);
+        args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
@@ -129,11 +129,11 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         return fragment;
     }
 
-    public static AddLocationFragment newInstance3(String username, String token) {
+    public static AddLocationFragment newInstance3(String username, User user) {
         AddLocationFragment fragment = new AddLocationFragment();
         Bundle args = new Bundle();
         args.putString("username", username);
-        args.putSerializable("token", token);
+        args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
