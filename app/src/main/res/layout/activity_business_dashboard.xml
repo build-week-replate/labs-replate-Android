@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraint_layout_business_dashboard_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,35 +8,31 @@
     android:padding="20dp"
     tools:context=".activities.Dashboard.BusinessDashboard">
 
+    <FrameLayout
+        android:id="@+id/frame_layout_business_dashboard_center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 
     <Button
-        android:text="Make your first donation"
+        android:id="@+id/button_business_dashboard_schedule_pickup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Schedule A Pickup"
+        app:layout_constraintStart_toEndOf="@id/button_business_dashboard_my_scheduled_pickups"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button_business_dashboard_my_scheduled_pickups"
+        android:text="My Scheduled Pickups"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_business_dashboard_schedule_pickup"
         />
-
-    <TableLayout
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TableRow>
-            <TextView android:text="4/15 Monday" />
-            <TextView android:text="4/16 Tuesday" />
-            <TextView android:text="4/1 Wednesday" />
-
-        </TableRow>
-        <TableRow>
-            <TextView android:text="no pickups" />
-            <TextView android:text="no pickups" />
-            <TextView android:text="no pickups" />
-
-        </TableRow>
-    </TableLayout>
 
 </android.support.constraint.ConstraintLayout>

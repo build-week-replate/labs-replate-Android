@@ -11,22 +11,33 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Pickups"
+        android:text="Available Pickups Near Me"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_volunteer_pickups"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+    <FrameLayout
+        android:id="@+id/frame_layout_volunteer_pickups"
+        android:name="com.example.replate.activities.Dashboard.Fragments.PickupDisplay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 
 
     <Button
-        android:text="Find a Pickup"
-        android:backgroundTint="@color/colorPrimaryLightGreen"
+        android:id="@+id/button_volunteer_dashboard_my_pickups"
+        android:text="My Pickups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Button
+        android:id="@+id/button_volunteer_dashboard_all_pickups"
+        android:text="All Pickups"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

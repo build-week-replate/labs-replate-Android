@@ -43,7 +43,6 @@
     <Button
         android:id="@+id/button_login_business_login"
         android:layout_width="200dp"
-        android:backgroundTint="@color/colorPrimaryLightGreen"
         android:layout_height="wrap_content"
         android:text="Login"
         app:layout_constraintTop_toBottomOf="@id/edit_text_password_business_login"

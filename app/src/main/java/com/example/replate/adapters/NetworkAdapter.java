@@ -26,6 +26,7 @@ public class NetworkAdapter {
     public static final String PUT     = "PUT";
     public static final String DELETE  = "DELETE";
     public static final String TRACE   = "TRACE";
+    public static final String PATCH   = "PATCH";
 
     static String httpRequest(String urlString) {
         return httpRequest(urlString, GET, null, null);
@@ -51,7 +52,7 @@ public class NetworkAdapter {
                     connection.setRequestProperty(property.getKey(), property.getValue());
                 }
             }
-            if((requestMethod.equals(POST) || requestMethod.equals(PUT)) && requestBody != null) {
+            if(requestBody != null) {
                 connection.setDoInput(true);
                 final OutputStream outputStream = connection.getOutputStream();
                 outputStream.write(requestBody.toString().getBytes());
@@ -61,7 +62,7 @@ public class NetworkAdapter {
             }
 
             final int responseCode = connection.getResponseCode();
-            if (responseCode == HttpsURLConnection.HTTP_OK ) {
+            if (responseCode == HttpsURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_CREATED ) {
                 inputStream = connection.getInputStream();
                 if (inputStream != null) {
                     BufferedReader reader  = new BufferedReader(new InputStreamReader(inputStream));

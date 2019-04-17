@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class UserLoginDao {
     private static final String BASE_URL = "https://replate-backend-turcan.herokuapp.com/api/users/";
-    //private static final String END_URL = "";
     private static final String LOGIN_URL = "login";
 
 
@@ -44,10 +43,6 @@ public class UserLoginDao {
                 .append("\"phone\":\"" + user.getPhoneNumber() + "\",")
                 .append("\"email\":\"" + user.getEmailAddress() + "\",")
                 .append("\"password\":\"" + user.getPassword() + "\"");
-//                .append("\"address\":\"" + business.getAddress() + "\",")
-//                .append("\"officeName\":\"" + business.getOfficeName());
-//                if (business.getOfficeEmail()!=null)
-//                    stringBuilder.append("\"," + "\"officeEmail\":" + business.getOfficeEmail());
         stringBuilder.append("}");
 
         try {
