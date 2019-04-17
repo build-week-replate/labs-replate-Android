@@ -19,7 +19,7 @@
             android:hint="Pickup Date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/editText_schedule_pickup_time"
+            app:layout_constraintBottom_toTopOf="@id/editText_schedule_pickup_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,33 +30,33 @@
             android:hint="Pickup Time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/editText_schedule_pickup_instructions"
+            app:layout_constraintBottom_toTopOf="@id/editText_schedule_pickup_instructions"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_schedule_pickup_date" />
+            app:layout_constraintTop_toBottomOf="@id/editText_schedule_pickup_date" />
 
         <EditText
             android:id="@+id/editText_schedule_pickup_instructions"
             android:hint="Pickup Instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/editText_schedule_pickup_additional_notes"
+            app:layout_constraintBottom_toTopOf="@id/editText_schedule_pickup_additional_notes"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_schedule_pickup_time" />
+            app:layout_constraintTop_toBottomOf="@id/editText_schedule_pickup_time" />
 
         <EditText
             android:id="@+id/editText_schedule_pickup_additional_notes"
             android:hint="Additional Notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/button_detail_schedule_pickup_submit_order"
+            app:layout_constraintBottom_toTopOf="@id/button_detail_schedule_pickup_submit_order"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_schedule_pickup_instructions" />
+            app:layout_constraintTop_toBottomOf="@id/editText_schedule_pickup_instructions" />
 
         <Button
             android:id="@+id/button_detail_schedule_pickup_submit_order"
@@ -64,8 +64,8 @@
             android:layout_height="wrap_content"
             android:text="Submit Pickup Order"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/editText_schedule_pickup_date"
-            app:layout_constraintTop_toBottomOf="@+id/editText_schedule_pickup_additional_notes" />
+            app:layout_constraintStart_toStartOf="@id/editText_schedule_pickup_date"
+            app:layout_constraintTop_toBottomOf="@id/editText_schedule_pickup_additional_notes" />
 
     </android.support.constraint.ConstraintLayout>
 

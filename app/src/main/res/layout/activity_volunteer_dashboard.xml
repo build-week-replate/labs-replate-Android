@@ -28,6 +28,7 @@
 
 
     <Button
+        android:id="@+id/button_volunteer_dashboard_my_pickups"
         android:text="My Pickups"
         android:backgroundTint="@color/colorPrimaryLightGreen"
         android:layout_width="wrap_content"

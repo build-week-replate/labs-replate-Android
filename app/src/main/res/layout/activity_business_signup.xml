@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/editText_business_signup_phone"
+                app:layout_constraintBottom_toTopOf="@id/editText_business_signup_phone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView_business_signup_header1" />
 
@@ -42,9 +42,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberSigned"
-                app:layout_constraintBottom_toTopOf="@+id/editText_business_signup_email1"
+                app:layout_constraintBottom_toTopOf="@id/editText_business_signup_email1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_business_signup_company_name" />
+                app:layout_constraintTop_toBottomOf="@id/editText_business_signup_company_name" />
 
             <EditText
                 android:id="@+id/editText_business_signup_email1"
@@ -53,9 +53,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textEmailAddress"
-                app:layout_constraintBottom_toTopOf="@+id/editText_business_signup_password1"
+                app:layout_constraintBottom_toTopOf="@id/editText_business_signup_password1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_business_signup_phone" />
+                app:layout_constraintTop_toBottomOf="@id/editText_business_signup_phone" />
 
             <EditText
                 android:id="@+id/editText_business_signup_password1"
@@ -64,9 +64,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPassword"
-                app:layout_constraintBottom_toTopOf="@+id/editText_business_signup_password2"
+                app:layout_constraintBottom_toTopOf="@id/editText_business_signup_password2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_business_signup_email1" />
+                app:layout_constraintTop_toBottomOf="@id/editText_business_signup_email1" />
 
             <EditText
                 android:id="@+id/editText_business_signup_password2"
@@ -75,9 +75,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPassword"
-                app:layout_constraintBottom_toTopOf="@+id/editText_business_signup_office_name"
+                app:layout_constraintBottom_toTopOf="@id/editText_business_signup_office_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_business_signup_password1" />
+                app:layout_constraintTop_toBottomOf="@id/editText_business_signup_password1" />
 
             <TextView
                 android:text="Your Local Office:"
@@ -96,9 +96,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/editText_business_signup_office_address"
+                app:layout_constraintBottom_toTopOf="@id/editText_business_signup_office_address"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_business_signup_header2" />
+                app:layout_constraintTop_toBottomOf="@id/textView_business_signup_header2" />
 
             <EditText
                 android:id="@+id/editText_business_signup_office_address"
@@ -107,9 +107,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPostalAddress"
-                app:layout_constraintBottom_toTopOf="@+id/editText_business_signup_email2"
+                app:layout_constraintBottom_toTopOf="@id/editText_business_signup_email2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_business_signup_office_name" />
+                app:layout_constraintTop_toBottomOf="@id/editText_business_signup_office_name" />
 
             <EditText
                 android:id="@+id/editText_business_signup_email2"
@@ -120,7 +120,7 @@
                 android:inputType="textEmailAddress"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_business_signup_office_address" />
+                app:layout_constraintTop_toBottomOf="@id/editText_business_signup_office_address" />
 
             <Button
                 android:id="@+id/button_signup_business_complete_signup"
