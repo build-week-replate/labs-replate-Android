@@ -7,21 +7,33 @@
     android:padding="20dp"
     tools:context=".activities.Dashboard.VolunteerDashBoard">
 
+
+    <ImageView
+        android:id="@+id/replate_logo_imageview_volunteer_dashboard"
+        android:layout_width="274dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/replate_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView_volunteer_dashboard_top_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Available Pickups Near Me"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/replate_logo_imageview_volunteer_dashboard" />
 
     <FrameLayout
+        android:paddingTop="10dp"
         android:id="@+id/frame_layout_volunteer_pickups"
         android:name="com.example.replate.activities.Dashboard.Fragments.PickupDisplay"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView8"
+        app:layout_constraintTop_toBottomOf="@id/textView_volunteer_dashboard_top_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         />
 
 

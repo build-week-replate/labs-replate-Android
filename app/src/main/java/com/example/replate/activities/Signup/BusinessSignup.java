@@ -10,8 +10,13 @@ import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.activities.Dashboard.BusinessDashboard;
+import com.example.replate.activities.Dashboard.VolunteerDashBoard;
 import com.example.replate.daos.UserLoginDao;
 import com.example.replate.models.Business;
+import com.example.replate.models.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BusinessSignup extends AppCompatActivity {
 
@@ -53,8 +58,15 @@ public class BusinessSignup extends AppCompatActivity {
                         public void run() {
                             String result = UserLoginDao.createNewAccount(business);
                             Intent intent = new Intent(getApplicationContext(), BusinessDashboard.class);
-                            intent.putExtra("resultString", result);
-                            startActivity(intent);
+                            JSONObject jsonObject;
+                            try {
+                                jsonObject = new JSONObject(result);
+                                User user = new User(jsonObject);
+                                intent.putExtra("result", user);
+                                startActivity(intent);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }).start();
                 }

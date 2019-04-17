@@ -49,6 +49,10 @@ public class PickupDetail extends AppCompatActivity {
         editTextPickupNotes.setText(pickupRequest.getNotes());
 
         if (user.getType().equals("volunteer")) {
+            editTextPickupDate.setEnabled(false);
+            editTextPickupTime.setEnabled(false);
+            editTextPickupInstructions.setEnabled(false);
+            editTextPickupNotes.setEnabled(false);
             if (user.getId() == pickupRequest.getVolunteer_id()) { //volunteer and accepted pickup
                 buttonMarkComplete.setVisibility(View.VISIBLE);
                 buttonSubmitChanges.setVisibility(View.GONE);
