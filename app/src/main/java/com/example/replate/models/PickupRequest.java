@@ -17,6 +17,9 @@ public class PickupRequest implements Serializable {
     private int volunteer_id; //null if not taken
     private int company_id;
     private int id;
+    private String address;
+    private String officeName;
+    private String officeEmail;
 
     public PickupRequest(String name, String time, String date, String instructions, String notes, int id) {
         this.name = name;
