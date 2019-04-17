@@ -16,13 +16,18 @@ public class PickupRequest implements Serializable {
     private boolean taken;
     private int volunteer_id; //null if not taken
     private int company_id;
+    private int id;
 
-    public PickupRequest(String name, String time, String date, String instructions, String notes) {
+    public PickupRequest(String name, String time, String date, String instructions, String notes, int id) {
         this.name = name;
         this.time = time;
         this.date = date;
         this.instructions = instructions;
         this.notes = notes;
+        this.id = id;
+    }
+    public PickupRequest(String name, String time, String date, String instructions, String notes) {
+        this(name, time, date, instructions, notes, 0);
     }
 
     public PickupRequest(JSONObject temp) {
@@ -32,7 +37,12 @@ public class PickupRequest implements Serializable {
             this.date = temp.getString("pickup_date");
             this.instructions = temp.getString("pickup_comment");
             this.company_id = temp.getInt("company_id");
-            this.volunteer_id = temp.getInt("volunteer_id");
+            this.id = temp.getInt("id");
+            try {
+                this.volunteer_id = temp.getInt("volunteer_id");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             this.taken = temp.getBoolean("taken");
             try {
                 this.notes = temp.getString("pickup_additional_comment");
@@ -64,9 +74,18 @@ public class PickupRequest implements Serializable {
         return notes;
     }
 
-    public boolean isTaken() { return taken; }
+    public boolean isTaken() {
+        return taken;
+    }
 
-    public int getVolunteer_id() { return volunteer_id; }
+    public int getVolunteer_id() {
+        return volunteer_id;
+    }
 
-    public int getCompany_id() { return company_id; }
+    public int getCompany_id() {
+        return company_id;
+    }
+    public int getId() {
+        return id;
+    }
 }

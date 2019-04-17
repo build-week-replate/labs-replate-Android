@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.replate.R;
-import com.example.replate.adapters.NetworkAdapter;
 import com.example.replate.daos.PickupRequestsDao;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;

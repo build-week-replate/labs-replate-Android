@@ -93,4 +93,10 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         fragment.setArguments(args);
         return fragment;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 }

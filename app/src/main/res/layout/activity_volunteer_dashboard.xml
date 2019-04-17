@@ -25,11 +25,19 @@
         />
 
 
-
-
     <Button
         android:id="@+id/button_volunteer_dashboard_my_pickups"
         android:text="My Pickups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <Button
+        android:id="@+id/button_volunteer_dashboard_all_pickups"
+        android:text="All Pickups"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

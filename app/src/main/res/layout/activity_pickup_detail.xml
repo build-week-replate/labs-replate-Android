@@ -71,9 +71,18 @@
             android:id="@+id/button_detail_schedule_pickup_accept_pickup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:clickable="false"
+            android:visibility="gone"
             android:text="Accept Pickup"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/editText_detail_schedule_pickup_date"
+            app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />
+
+        <Button
+            android:id="@+id/button_detail_schedule_pickup_complete_pickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Mark As Complete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/editText_detail_schedule_pickup_date"
             app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />

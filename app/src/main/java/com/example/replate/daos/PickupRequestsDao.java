@@ -11,7 +11,9 @@ import java.util.Map;
 
 public class PickupRequestsDao {
 
-    private static final String PICKUPS_URL = "https://replate-backend-turcan.herokuapp.com/api/schedules";
+    private static final String PICKUPS_URL = "https://replate-backend-turcan.herokuapp.com/api/schedules/";
+    private static final String TAKE_URL = "/take";
+
 
 
 
@@ -47,5 +49,23 @@ public class PickupRequestsDao {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static String editPickupRequest(PickupRequest pickupRequest, String token){
+        JSONObject jsonObject = toJson(pickupRequest);
+        Map<String, String> header = new HashMap();
+        header.put("Authorization", token);
+        header.put("Content-Type", "application/json");
+        String result = NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()), NetworkAdapter.PATCH, jsonObject, header);
+        return result;
+    }
+
+    public static String assignPickup(PickupRequest pickupRequest, String token) {
+        JSONObject jsonObject = toJson(pickupRequest);
+        Map<String, String> header = new HashMap();
+        header.put("Authorization", token);
+        header.put("Content-Type", "application/json");
+        String result = NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()) + TAKE_URL, NetworkAdapter.PATCH, jsonObject, header);
+        return result;
     }
 }
