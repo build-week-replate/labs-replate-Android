@@ -138,8 +138,6 @@ public class PickupDetail extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
     private boolean validateFields() {
