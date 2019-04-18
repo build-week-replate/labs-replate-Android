@@ -16,13 +16,14 @@ import com.example.replate.activities.Dashboard.Fragments.PickupsDisplayFragment
 import com.example.replate.activities.Dashboard.Fragments.SchedulePickupFragment;
 import com.example.replate.daos.OfficeLocationsDao;
 import com.example.replate.daos.PickupRequestsDao;
-import com.example.replate.daos.UserLoginDao;
 import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;
 
 public class BusinessDashboard extends AppCompatActivity implements SchedulePickupFragment.OnSubmitListener, AddLocationFragment.OnAddLocationListener {
 
+    public static final String RESULT = "result";
+    public static final String USER = "user";
 
     Button buttonSchedulePickup;
     Button buttonMyPickups;
@@ -38,7 +39,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         setContentView(R.layout.activity_business_dashboard);
 
         Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("result");
+        user = (User) intent.getSerializableExtra(RESULT);
 
         buttonSchedulePickup = findViewById(R.id.button_business_dashboard_schedule_pickup);
         buttonMyPickups = findViewById(R.id.button_business_dashboard_my_scheduled_pickups);
@@ -51,7 +52,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance3(user);
+                fragment = newInstanceOfAddLocation(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
             }
@@ -63,7 +64,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             public void onClick(View v) {
                 // Begin the transaction
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance(user);
+                fragment = newInstanceOfSchedulePickup(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
             }
@@ -73,7 +74,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                PickupsDisplayFragment pickupsDisplayFragment = newInstance2(user);
+                PickupsDisplayFragment pickupsDisplayFragment = newInstanceOfPickupsDisplay(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, pickupsDisplayFragment);
                 ft.commitNow();
                 pickupsDisplayFragment.getCompanyPickups(user.getId());
@@ -111,26 +112,26 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
     }
 
 
-    public static SchedulePickupFragment newInstance(User user) {
+    public static SchedulePickupFragment newInstanceOfSchedulePickup(User user) {
         SchedulePickupFragment fragment = new SchedulePickupFragment();
         Bundle args = new Bundle();
-        args.putSerializable("user", user);
+        args.putSerializable(USER, user);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public static PickupsDisplayFragment newInstance2(User user) {
+    public static PickupsDisplayFragment newInstanceOfPickupsDisplay(User user) {
         PickupsDisplayFragment fragment = new PickupsDisplayFragment();
         Bundle args = new Bundle();
-        args.putSerializable("user", user);
+        args.putSerializable(USER, user);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public static AddLocationFragment newInstance3(User user) {
+    public static AddLocationFragment newInstanceOfAddLocation(User user) {
         AddLocationFragment fragment = new AddLocationFragment();
         Bundle args = new Bundle();
-        args.putSerializable("user", user);
+        args.putSerializable(USER, user);
         fragment.setArguments(args);
         return fragment;
     }
