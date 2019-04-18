@@ -29,7 +29,6 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
     Button buttonMyPickups;
     Button buttonAddLocation;
     ConstraintLayout constraintLayout;
-    ConstraintSet constraintSet;
     Fragment fragment;
     User user;
 
@@ -45,8 +44,6 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         buttonMyPickups = findViewById(R.id.button_business_dashboard_my_scheduled_pickups);
         buttonAddLocation = findViewById(R.id.button_business_dashboard_add_location);
         constraintLayout = findViewById(R.id.constraint_layout_business_dashboard_parent);
-        constraintSet = new ConstraintSet();
-        constraintSet.clone(constraintLayout);
 
         buttonAddLocation.setOnClickListener(new View.OnClickListener() {
             @Override
