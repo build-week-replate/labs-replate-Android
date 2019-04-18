@@ -7,11 +7,11 @@ Replate is an web platform that connects businesses with excess food at the end 
 <img src="https://github.com/build-week-replate/labs-replate-Android/blob/master/Replate_splash_page.png?raw=true" width="250">
 
 ## Current Release
--Businesses and Volunteers can create accounts and login
--Businesses can post-edit and delete requests
--Volunteers can view all requests
--Volunteers can accept posted requests
--Volunteers can view and complete their requests
+-Businesses and Volunteers can create accounts and login<br>
+-Businesses can post-edit and delete requests<br>
+-Volunteers can view all requests<br>
+-Volunteers can accept posted requests<br>
+-Volunteers can view and complete their requests<br>
 
 ## Instructions to install on your android phone
 ### 1-Navigate your android device to this page.
