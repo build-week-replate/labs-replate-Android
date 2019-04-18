@@ -1,7 +1,5 @@
 package com.example.replate.models;
 
-import android.support.annotation.Nullable;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,18 +18,19 @@ public class PickupRequest implements Serializable {
     private int locationId;
     private String officeaddress;
     private String officeName;
-    private String officeEmail;
+    private String officeEmail; //optional
 
-    public PickupRequest(String name, String time, String date, String instructions, String notes, int locationId) {
+    public PickupRequest(String name, String time, String date, String instructions, String notes, int id, int locationId) {
         this.name = name;
         this.time = time;
         this.date = date;
         this.instructions = instructions;
         this.notes = notes;
+        this.id = id;
         this.locationId = locationId;
     }
-    public PickupRequest(String name, String time, String date, String instructions, String notes) {
-        this(name, time, date, instructions, notes, 0);
+    public PickupRequest(String name, String time, String date, String instructions, String notes, int locationId) {
+        this(name, time, date, instructions, notes, 0, locationId);
     }
 
     public PickupRequest(JSONObject temp) {
@@ -43,6 +42,7 @@ public class PickupRequest implements Serializable {
             this.company_id = temp.getInt("company_id");
             this.id = temp.getInt("id");
             this.taken = temp.getBoolean("taken");
+            this.locationId = temp.getInt("location_id");
             this.officeName = temp.getString("office_name");
             this.officeaddress = temp.getString("office_address");
 
@@ -103,17 +103,13 @@ public class PickupRequest implements Serializable {
         return id;
     }
 
-    public String getOfficeAddress() {
-        return officeaddress;
-    }
+    public String getOfficeAddress() { return officeaddress; }
 
-    public String getOfficeName() {
-        return officeName;
-    }
+    public String getOfficeName() { return officeName; }
 
-    public String getOfficeEmail() {
-        return officeEmail;
-    }
+    public String getOfficeEmail() { return officeEmail; }
 
     public int getLocationId() { return locationId; }
+
+    public void setId(int id) { this.id = id; }
 }

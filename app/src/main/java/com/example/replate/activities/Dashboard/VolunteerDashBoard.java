@@ -14,6 +14,9 @@ import com.example.replate.models.User;
 
 public class VolunteerDashBoard extends AppCompatActivity {
 
+    public static final String RESULT = "result";
+    public static final String USERNAME = "username";
+    public static final String USER = "user";
     PickupsDisplayFragment fragment;
     Button buttonMyPickups;
     Button buttonAllPickups;
@@ -32,7 +35,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        user = (User) intent.getSerializableExtra("result");
+        user = (User) intent.getSerializableExtra(RESULT);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         fragment = newInstance(user.getName(), user);
@@ -50,7 +53,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
                 fragment.getVolunteerPickups(user.getId());
                 buttonAllPickups.setVisibility(View.VISIBLE);
                 buttonMyPickups.setVisibility(View.GONE);
-                textViewTopText.setText("My Pickups");
+                textViewTopText.setText(getString(R.string.my_pickups));
             }
         });
 
@@ -64,7 +67,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
                 fragment.getAllPickups();
                 buttonAllPickups.setVisibility(View.GONE);
                 buttonMyPickups.setVisibility(View.VISIBLE);
-                textViewTopText.setText("Available Pickups Near Me");
+                textViewTopText.setText(getString(R.string.available_pickups_near_me));
             }
         });
     }
@@ -72,8 +75,8 @@ public class VolunteerDashBoard extends AppCompatActivity {
     public static PickupsDisplayFragment newInstance(String username, User user) {
         PickupsDisplayFragment fragment = new PickupsDisplayFragment();
         Bundle args = new Bundle();
-        args.putString("username", username);
-        args.putSerializable("user", user);
+        args.putString(USERNAME, username);
+        args.putSerializable(USER, user);
         fragment.setArguments(args);
         return fragment;
     }

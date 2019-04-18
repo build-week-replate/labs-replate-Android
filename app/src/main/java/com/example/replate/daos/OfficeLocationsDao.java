@@ -15,14 +15,17 @@ import java.util.Map;
 public class OfficeLocationsDao {
 
     private static final String LOCATION_URL = "https://replate-backend-turcan.herokuapp.com/api/locations/";
+    private static final String CONTENT_TYPE = "Content-Type";
+    private static final String APPLICATION_JSON = "application/json";
+    private static final String AUTHORIZATION = "Authorization";
 
 
-    public static String createNewLocation(OfficeLocation officeLocation, String token) {
+    public static void createNewLocation(OfficeLocation officeLocation, String token) {
         JSONObject jsonObject = locationToJson(officeLocation);
         Map<String, String> header = new HashMap<>();
-        header.put("Content-Type", "application/json");
-        header.put("Authorization", token);
-        return NetworkAdapter.httpRequest(LOCATION_URL, NetworkAdapter.POST, jsonObject, header);
+        header.put(CONTENT_TYPE, APPLICATION_JSON);
+        header.put(AUTHORIZATION, token);
+        NetworkAdapter.httpRequest(LOCATION_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
     public static ArrayList<OfficeLocation> getBusinessLocationsList(User user) {
@@ -42,20 +45,18 @@ public class OfficeLocationsDao {
     }
 
     private static String getAllLocations(User user){
-        Map<String, String> header = new HashMap();
-        header.put("Authorization", user.getToken());
-        header.put("Content-Type", "application/json");
-        String result = NetworkAdapter.httpRequest(LOCATION_URL + user.getId(), NetworkAdapter.GET, null, header);
-        return result;
+        HashMap<String, String> header = new HashMap<>();
+        header.put(CONTENT_TYPE, APPLICATION_JSON);
+        header.put(AUTHORIZATION, user.getToken());
+        return NetworkAdapter.httpRequest(LOCATION_URL + user.getId(), NetworkAdapter.GET, null, header);
     }
 
     private static JSONObject locationToJson(OfficeLocation officeLocation) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder
-                .append("{\"office_name\":\"" + officeLocation.getOfficeName() + "\",")
-                .append("\"office_address\":\"" + officeLocation.getOfficeAddress() + "\",")
-                .append("\"office_email\":\"" + officeLocation.getOfficeEmail() + "\"");
-        stringBuilder.append("}");
+                .append("{\"office_name\":\"").append(officeLocation.getOfficeName()).append("\",")
+                .append("\"office_address\":\"").append(officeLocation.getOfficeAddress()).append("\",")
+                .append("\"office_email\":\"").append(officeLocation.getOfficeEmail()).append("\"}");
 
         try {
             return new JSONObject(stringBuilder.toString());

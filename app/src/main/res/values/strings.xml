@@ -1,7 +1,51 @@
 <resources>
     <string name="app_name">RePlate</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_pickup_detail_view">PickupDetailView</string>
+    <string name="my_pickups">My Pickups</string>
+    <string name="available_pickups_near_me">Available Pickups Near Me</string>
+    <string name="invalid_login_credentials">Invalid Login Credentials</string>
+    <string name="you_are_in_the_wrong_login_screen">You are in the wrong login screen</string>
+    <string name="plus_location">+location</string>
+    <string name="replate_logo">replate logo</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email Address</string>
+    <string name="schedule_a_pickup">Schedule A Pickup</string>
+    <string name="my_scheduled_pickups">My Scheduled Pickups</string>
+    <string name="location">+location</string>
+    <string name="i_am_a">I am a</string>
+    <string name="volunteer">Volunteer</string>
+    <string name="business">Business</string>
+    <string name="pickup_name">Pickup Name</string>
+    <string name="pickup_date">Pickup Date</string>
+    <string name="pickup_time">Pickup Time</string>
+    <string name="pickup_instructions">Pickup Instructions</string>
+    <string name="additional_notes">Additional Notes</string>
+    <string name="submit_changes">Submit Changes</string>
+    <string name="accept_pickup">Accept Pickup</string>
+    <string name="mark_as_complete">Mark As Complete</string>
+    <string name="remove_this_pickup">Remove this Pickup</string>
+    <string name="all_pickups">All Pickups</string>
+    <string name="new_account">New Account</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="e_mail">E-mail</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="office_name">Office Name</string>
+    <string name="office_address">Office Address</string>
+    <string name="office_email_optional">Office Email (optional)</string>
+    <string name="add_location">Add Location</string>
+    <string name="additional_notes_optional">Additional Notes (optional)</string>
+    <string name="example_name">Cafe Rio</string>
+    <string name="example_date">10/26</string>
+    <string name="example_time">12:35pm</string>
+    <string name="example_instructions">Please leave the key under the mat</string>
+    <string name="example_location">San Bernadino</string>
+    <string name="example_address">123 Bluefoot Way</string>
+    <string name="company_information">Company information:</string>
+    <string name="company_name">Company Name</string>
+    <string name="your_local_office">Your Local Office:</string>
+    <string name="office_e_mail_optional">Office E-mail (optional)</string>
 </resources>

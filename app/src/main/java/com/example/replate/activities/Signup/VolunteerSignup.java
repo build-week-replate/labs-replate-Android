@@ -75,7 +75,7 @@ public class VolunteerSignup extends AppCompatActivity {
 
         return new Volunteer(
                 editTextName.getText().toString(),
-                Integer.valueOf(editTextPhone.getText().toString()),
+                editTextPhone.getText().toString(),
                 editTextEmail.getText().toString(),
                 editTextPassword1.getText().toString());
     }

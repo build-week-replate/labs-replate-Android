@@ -19,10 +19,12 @@ import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AddLocationFragment extends Fragment {
+
+    public static final String MUST_IMPLEMENT_ADD_LOCATION_FRAGMENT_ON_ADD_LOCATION_LISTENER =
+            " must implement AddLocationFragment.OnAddLocationListener";
+    public static final String USER = "user";
 
     OnAddLocationListener listener;
 
@@ -39,11 +41,13 @@ public class AddLocationFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = (User)getArguments().getSerializable("user");
+        if (getArguments() != null) {
+            user = (User)getArguments().getSerializable(USER);
+        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_add_location, container, false);
     }
@@ -66,7 +70,7 @@ public class AddLocationFragment extends Fragment {
                         editTextLocationAddress.getText().toString(),
                         editTextLocationEmail.getText().toString()
                 );
-                addLocationRequest(v, officeLocation, user.getToken());
+                addLocationRequest(officeLocation, user.getToken());
             }
         });
     }
@@ -79,14 +83,14 @@ public class AddLocationFragment extends Fragment {
             listener = (OnAddLocationListener) context;
         } else {
             throw new ClassCastException(context.toString()
-                    + " must implement AddLocationFragment.OnAddLocationListener");
+                    + MUST_IMPLEMENT_ADD_LOCATION_FRAGMENT_ON_ADD_LOCATION_LISTENER);
         }
     }
     public interface OnAddLocationListener {
         void onAddLocationListener(OfficeLocation officeLocation, String token);
     }
 
-    public void addLocationRequest(View v, OfficeLocation officeLocation, String token) {
+    public void addLocationRequest(OfficeLocation officeLocation, String token) {
         listener.onAddLocationListener(officeLocation, token);
     }
 

@@ -14,11 +14,11 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:paddingTop="50dp"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/textview_volunteer_signup_header"
-                android:text="New Account"
+                android:text="@string/new_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toTopOf="@id/editText_volunteer_signup_phone"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Phone"
-                android:inputType="numberSigned"
+                android:hint="@string/phone"
+                android:inputType="phone"
                 app:layout_constraintBottom_toTopOf="@id/editText_volunteer_signup_email"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/editText_volunteer_signup_name" />
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="E-mail"
+                android:hint="@string/e_mail"
                 android:inputType="textEmailAddress"
                 app:layout_constraintBottom_toTopOf="@id/editText_volunteer_signup_password1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@id/editText_volunteer_signup_password2"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Repeat password"
+                android:hint="@string/repeat_password"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
             <Button
                 android:id="@+id/button_signup_volunteer_complete_signup"
                 android:width="120dp"
-                android:text="Sign Up"
+                android:text="@string/sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/editText_volunteer_signup_password2"

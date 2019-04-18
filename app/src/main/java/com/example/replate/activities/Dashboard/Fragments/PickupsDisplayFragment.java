@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class PickupsDisplayFragment extends Fragment {
@@ -37,30 +38,26 @@ public class PickupsDisplayFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        user = (User)getArguments().getSerializable("user");
+        if (getArguments() != null) {
+            user = (User)getArguments().getSerializable("user");
+        }
         super.onAttach(context);
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_pickup_display, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        //Setting Up RecyclerView
         recyclerView = view.findViewById(R.id.recycler_view_pickups_list);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
         mAdapter = new PickupsListAdapter(pickupRequests, user);
         recyclerView.setAdapter(mAdapter);
     }
@@ -76,7 +73,7 @@ public class PickupsDisplayFragment extends Fragment {
                         JSONObject temp = results.getJSONObject(i);
                         pickupRequests.add(new PickupRequest(temp));
                     }
-                    getActivity().runOnUiThread(new Runnable() {
+                    Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mAdapter.notifyDataSetChanged();
@@ -106,7 +103,7 @@ public class PickupsDisplayFragment extends Fragment {
                             pickupRequests.add(new PickupRequest(temp));
                         }
                     }
-                    getActivity().runOnUiThread(new Runnable() {
+                    Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mAdapter.notifyDataSetChanged();
@@ -135,7 +132,7 @@ public class PickupsDisplayFragment extends Fragment {
                             pickupRequests.add(new PickupRequest(temp));
                         }
                     }
-                    getActivity().runOnUiThread(new Runnable() {
+                    Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             mAdapter.notifyDataSetChanged();

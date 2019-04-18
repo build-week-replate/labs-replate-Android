@@ -7,7 +7,7 @@ public class Business extends User implements Serializable {
     private String officeName;
     private String officeEmail;
 
-    public Business(String name, int phoneNumber, String emailAddress, String password, String address, String officeName, String officeEmail) {
+    public Business(String name, String phoneNumber, String emailAddress, String password, String address, String officeName, String officeEmail) {
         this.officeEmail = officeEmail;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -17,7 +17,7 @@ public class Business extends User implements Serializable {
         this.password = password;
     }
 
-    public Business(String name, int phoneNumber, String emailAddress, String password, String address, String officeName) {
+    public Business(String name, String phoneNumber, String emailAddress, String password, String address, String officeName) {
         this(name, phoneNumber, emailAddress, password, address, officeName, null);
     }
 

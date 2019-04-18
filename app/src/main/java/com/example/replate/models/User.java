@@ -8,10 +8,9 @@ import java.io.Serializable;
 public class User implements Serializable {
     String name;
     String emailAddress;
-    int phoneNumber;
+    String phoneNumber;
     String password;
     private String token;
-    private String encryptedPass;
     private String type;
     private int id;
 
@@ -21,8 +20,7 @@ public class User implements Serializable {
             JSONObject temp = jsonObject.getJSONObject("user");
             name = temp.getString("name");
             emailAddress = temp.getString("email");
-            phoneNumber = temp.getInt("phone");
-            encryptedPass = temp.getString("password");
+            phoneNumber = temp.getString("phone");
             type = temp.getString("type");
             id = temp.getInt("id");
             token = jsonObject.getString("token");
@@ -47,7 +45,7 @@ public class User implements Serializable {
         return emailAddress;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 

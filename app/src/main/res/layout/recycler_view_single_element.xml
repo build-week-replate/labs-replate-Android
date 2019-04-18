@@ -26,61 +26,66 @@
 
 
             <TextView
-                android:id="@+id/recycler_single_element_text1"
-                android:layout_width="match_parent"
+                android:id="@+id/textView_recycler_single_element_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="22dp"
-                android:text="Cafe Rio"
-                app:layout_constraintBottom_toTopOf="@+id/recycler_single_element_text2"
+                android:textSize="22sp"
+                android:text="@string/example_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/textView_recycler_single_element_location_name"
+                app:layout_constraintBottom_toTopOf="@+id/textView_recycler_single_element_date"
                 app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
-                android:id="@+id/recycler_single_element_text2"
+                android:id="@+id/textView_recycler_single_element_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:text="10/26"
+                android:textSize="15sp"
+                android:text="@string/example_date"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recycler_single_element_text1" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_recycler_single_element_name" />
 
 
             <TextView
-                android:id="@+id/recycler_single_element_text3"
+                android:id="@+id/textView_recycler_single_element_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:text="12:35pm"
-                app:layout_constraintTop_toBottomOf="@id/recycler_single_element_text1"
-                app:layout_constraintStart_toEndOf="@id/recycler_single_element_text2" />
+                android:paddingRight="10dp"
+                android:text="@string/example_time"
+                app:layout_constraintTop_toBottomOf="@id/textView_recycler_single_element_name"
+                app:layout_constraintStart_toEndOf="@id/textView_recycler_single_element_date" />
 
             <TextView
-                android:id="@+id/recycler_single_element_text4"
+                android:id="@+id/textView_recycler_single_element_instructions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Please leave the key under the mat"
-                app:layout_constraintTop_toBottomOf="@id/recycler_single_element_text2"
+                android:text="@string/example_instructions"
+                app:layout_constraintTop_toBottomOf="@id/textView_recycler_single_element_date"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/recycler_single_element_text5"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView_recycler_single_element_location_name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="San Bernadino"
+                android:textSize="20sp"
+                android:text="@string/example_location"
+                android:gravity="end"
+                app:layout_constraintStart_toEndOf="@id/textView_recycler_single_element_name"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
-                android:id="@+id/recycler_single_element_text6"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView_recycler_single_element_location_address"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="123 Bluefoot Way"
-                app:layout_constraintBaseline_toBaselineOf="@id/recycler_single_element_text3"
+                android:gravity="end"
+                android:text="@string/example_address"
+                app:layout_constraintStart_toEndOf="@id/textView_recycler_single_element_time"
+                app:layout_constraintBaseline_toBaselineOf="@id/textView_recycler_single_element_time"
                 app:layout_constraintEnd_toEndOf="parent"/>
-
-
 
         </android.support.constraint.ConstraintLayout>
 

@@ -15,7 +15,7 @@
 
         <EditText
             android:id="@+id/editText_schedule_pickup_date"
-            android:hint="Pickup Date"
+            android:hint="@string/pickup_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/editText_schedule_pickup_time"
@@ -26,7 +26,7 @@
 
         <EditText
             android:id="@+id/editText_schedule_pickup_time"
-            android:hint="Pickup Time"
+            android:hint="@string/pickup_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/editText_schedule_pickup_instructions"
@@ -37,7 +37,7 @@
 
         <EditText
             android:id="@+id/editText_schedule_pickup_instructions"
-            android:hint="Pickup Instructions"
+            android:hint="@string/pickup_instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/editText_schedule_pickup_additional_notes"
@@ -48,7 +48,7 @@
 
         <EditText
             android:id="@+id/editText_schedule_pickup_additional_notes"
-            android:hint="Additional Notes"
+            android:hint="@string/additional_notes_optional"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/spinner_schedule_pickup_location"
