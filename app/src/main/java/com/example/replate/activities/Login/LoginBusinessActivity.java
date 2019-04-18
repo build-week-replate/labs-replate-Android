@@ -122,4 +122,6 @@ public class LoginBusinessActivity extends AppCompatActivity {
         ProgressBar progressBar = findViewById(R.id.progressBar_business_login);
         progressBar.setVisibility(View.GONE);
     }
+
+
 }

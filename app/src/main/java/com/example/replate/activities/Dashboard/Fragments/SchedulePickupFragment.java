@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.daos.OfficeLocationsDao;
@@ -24,6 +25,7 @@ import com.example.replate.models.User;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class SchedulePickupFragment extends Fragment {
 
@@ -93,18 +95,20 @@ public class SchedulePickupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //locationId = the id of the OfficeLocation at the spinner position
-                int locationId = locations.get(spinnerLocation.getSelectedItemPosition()).getId();
+                if (validateFields()) {
+                    int locationId = locations.get(spinnerLocation.getSelectedItemPosition()).getId();
 
-                PickupRequest pickupRequest = new PickupRequest(
-                        user.getName(),
-                        editTextPickupTime.getText().toString(),
-                        editTextPickupDate.getText().toString(),
-                        editTextPickupInstructions.getText().toString(),
-                        editTextPickupNotes.getText().toString(),
-                        locationId
-                );
+                    PickupRequest pickupRequest = new PickupRequest(
+                            user.getName(),
+                            editTextPickupTime.getText().toString(),
+                            editTextPickupDate.getText().toString(),
+                            editTextPickupInstructions.getText().toString(),
+                            editTextPickupNotes.getText().toString(),
+                            locationId
+                    );
 
-                submitPickupRequest(v, pickupRequest, user.getToken());
+                    submitPickupRequest(v, pickupRequest, user.getToken());
+                }
             }
         });
     }
@@ -128,5 +132,17 @@ public class SchedulePickupFragment extends Fragment {
         void onSubmitPickup(PickupRequest pickupRequest, String token);
     }
 
+    private boolean validateFields() {
+        if (editTextPickupTime.getText().toString().equals("")){
+            Toast.makeText(getContext(),"Invalid Pickup Time", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (editTextPickupDate.getText().toString().equals("")) {
+            Toast.makeText(getContext(),"Invalid Pickup Date", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (editTextPickupInstructions.getText().toString().equals("")) {
+            Toast.makeText(getContext(),"Invalid Pickup Instructions", Toast.LENGTH_SHORT).show();
+            return false;
+        }else return true;
+    }
 
 }

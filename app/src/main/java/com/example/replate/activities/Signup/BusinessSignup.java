@@ -19,6 +19,8 @@ import com.example.replate.models.User;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.regex.Pattern;
+
 public class BusinessSignup extends AppCompatActivity {
 
     EditText editTextName;
@@ -83,12 +85,23 @@ public class BusinessSignup extends AppCompatActivity {
     }
 
     public boolean checkFields() {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ //builds pattern to check if email is valid
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+
         if (editTextName.getText().toString().equals(""))
             Toast.makeText(BusinessSignup.this, "Please Enter a Name", Toast.LENGTH_SHORT).show();
         else if (editTextPhone.getText().toString().equals(""))
             Toast.makeText(BusinessSignup.this, "Please Enter a Phone Number", Toast.LENGTH_SHORT).show();
         else if (editTextEmail.getText().toString().equals(""))
             Toast.makeText(BusinessSignup.this, "Please Enter a company Email", Toast.LENGTH_SHORT).show();
+        else if(!pat.matcher(editTextEmail.getText().toString()).matches()) {
+            Toast.makeText(getApplicationContext(), "Invalid Email Address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         else if (editTextPassword1.getText().toString().equals(""))
             Toast.makeText(BusinessSignup.this, "Please Enter a Password", Toast.LENGTH_SHORT).show();
         else if (!editTextPassword2.getText().toString().equals(editTextPassword1.getText().toString()))

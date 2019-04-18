@@ -1,11 +1,13 @@
 package com.example.replate.activities.Dashboard;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.daos.PickupRequestsDao;
@@ -31,11 +33,13 @@ public class PickupDetail extends AppCompatActivity {
     Button buttonAcceptPickup;
     Button buttonMarkComplete;
     Button buttonDelete;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pickup_detail);
+        context = this;
 
         Intent intent = getIntent();
         pickupRequest = (PickupRequest)intent.getSerializableExtra(RESULT);
@@ -80,22 +84,24 @@ public class PickupDetail extends AppCompatActivity {
         buttonSubmitChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final PickupRequest pickupRequestEdited = new PickupRequest(
-                        user.getName(),
-                        editTextPickupTime.getText().toString(),
-                        editTextPickupDate.getText().toString(),
-                        editTextPickupInstructions.getText().toString(),
-                        editTextPickupNotes.getText().toString(),
-                        pickupRequest.getId(),
-                        pickupRequest.getLocationId()
-                );
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        PickupRequestsDao.editPickupRequest(pickupRequestEdited, user.getToken());
-                    }
-                }).start();
-                finish();
+                if (validateFields()) {
+                    final PickupRequest pickupRequestEdited = new PickupRequest(
+                            user.getName(),
+                            editTextPickupTime.getText().toString(),
+                            editTextPickupDate.getText().toString(),
+                            editTextPickupInstructions.getText().toString(),
+                            editTextPickupNotes.getText().toString(),
+                            pickupRequest.getId(),
+                            pickupRequest.getLocationId()
+                    );
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            PickupRequestsDao.editPickupRequest(pickupRequestEdited, user.getToken());
+                        }
+                    }).start();
+                    finish();
+                }
             }
         });
 
@@ -132,8 +138,18 @@ public class PickupDetail extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 
+    private boolean validateFields() {
+        if (editTextPickupTime.getText().toString().equals("")){
+            Toast.makeText(context,"Invalid Pickup Time", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (editTextPickupDate.getText().toString().equals("")) {
+            Toast.makeText(context,"Invalid Pickup Date", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (editTextPickupInstructions.getText().toString().equals("")) {
+            Toast.makeText(context,"Invalid Pickup Instructions", Toast.LENGTH_SHORT).show();
+            return false;
+        }else return true;
+    }
 }
