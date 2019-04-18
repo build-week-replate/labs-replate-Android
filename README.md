@@ -1,7 +1,17 @@
 # Re-Plate for Android
+
+Replate is an web platform that connects businesses with excess food at the end of the day with non-profits that can use that food. Businesses sign up, post Pickup Requests that volunteers will then accept and pick-up. Those pick-ups will then be transfered to nearby shelters and non-profits to make use of the food.
+
 ## Lambda Build Week
 
 <img src="https://github.com/build-week-replate/labs-replate-Android/blob/master/Replate_splash_page.png?raw=true" width="250">
+
+## Current Release
+-Businesses and Volunteers can create accounts and login
+-Businesses can post-edit and delete requests
+-Volunteers can view all requests
+-Volunteers can accept posted requests
+-Volunteers can view and complete their requests
 
 ## Instructions to install on your android phone
 ### 1-Navigate your android device to this page.
