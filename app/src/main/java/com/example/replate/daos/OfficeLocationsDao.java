@@ -15,9 +15,9 @@ import java.util.Map;
 public class OfficeLocationsDao {
 
     private static final String LOCATION_URL = "https://replate-backend-turcan.herokuapp.com/api/locations/";
-    public static final String CONTENT_TYPE = "Content-Type";
-    public static final String APPLICATION_JSON = "application/json";
-    public static final String AUTHORIZATION = "Authorization";
+    private static final String CONTENT_TYPE = "Content-Type";
+    private static final String APPLICATION_JSON = "application/json";
+    private static final String AUTHORIZATION = "Authorization";
 
 
     public static void createNewLocation(OfficeLocation officeLocation, String token) {

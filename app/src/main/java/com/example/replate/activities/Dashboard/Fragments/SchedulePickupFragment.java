@@ -92,13 +92,16 @@ public class SchedulePickupFragment extends Fragment {
         buttonSchedulePickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //locationId = the id of the OfficeLocation at the spinner position
+                int locationId = locations.get(spinnerLocation.getSelectedItemPosition()).getId();
+
                 PickupRequest pickupRequest = new PickupRequest(
                         user.getName(),
                         editTextPickupTime.getText().toString(),
                         editTextPickupDate.getText().toString(),
                         editTextPickupInstructions.getText().toString(),
                         editTextPickupNotes.getText().toString(),
-                        spinnerLocation.getSelectedItemPosition() + 1 //+1 - the backend doesn't have an element 0
+                        locationId
                 );
 
                 submitPickupRequest(v, pickupRequest, user.getToken());

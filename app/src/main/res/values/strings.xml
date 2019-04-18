@@ -8,4 +8,12 @@
     <string name="available_pickups_near_me">Available Pickups Near Me</string>
     <string name="invalid_login_credentials">Invalid Login Credentials</string>
     <string name="you_are_in_the_wrong_login_screen">You are in the wrong login screen</string>
+    <string name="add_location">+location</string>
+    <string name="replate_logo">replate logo</string>
+    <string name="schedule_a_pickup">Schedule A Pickup</string>
+    <string name="my_scheduled_pickups">My Scheduled Pickups</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="email_address">Email Address</string>
 </resources>

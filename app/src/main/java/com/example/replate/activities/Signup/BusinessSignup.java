@@ -105,7 +105,7 @@ public class BusinessSignup extends AppCompatActivity {
 
         return new Business(
                 editTextName.getText().toString(),
-                Integer.valueOf(editTextPhone.getText().toString()),
+                editTextPhone.getText().toString(),
                 editTextEmail.getText().toString(),
                 editTextPassword1.getText().toString(),
                 editTextOfficeAddress.getText().toString(),
