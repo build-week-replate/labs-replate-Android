@@ -26,10 +26,10 @@
 ## Project Credits
 
 ### Home Page Devs
-    Alyssa Hatfield - alyssajane.me
+    Alyssa Hatfield
 [Her RePlate Front Page](https://alyssajane.me)
     
-    Kayla Crow - 
+    Kayla Crow
 [Her Replate Front Page](https://build-week-replate.github.io/labs-replate-user-interface-design-2/)
 
 ### Back-End Devs
