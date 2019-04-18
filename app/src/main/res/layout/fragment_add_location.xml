@@ -36,7 +36,7 @@
 
         <EditText
             android:id="@+id/editText_add_location_office_email"
-            android:hint="Office Email"
+            android:hint="Office Email (optional)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

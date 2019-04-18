@@ -70,10 +70,10 @@
 
             <EditText
                 android:id="@+id/editText_business_signup_password2"
-                android:hint="Repeat Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Repeat Password"
                 android:inputType="textPassword"
                 app:layout_constraintBottom_toTopOf="@id/editText_business_signup_office_name"
                 app:layout_constraintStart_toStartOf="parent"

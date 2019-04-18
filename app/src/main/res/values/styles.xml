@@ -6,9 +6,9 @@
         <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
-    <!-- edittext style not working -->
+    <!-- edittext style -->
     <style name="OpenSansEditTextStyle" parent="android:Widget.EditText">
-        <item name="android:fontStyle">@font/pacifico</item>
+        <item name="fontFamily">@font/open_sans</item>
     </style>
 
     <!--Button Style-->

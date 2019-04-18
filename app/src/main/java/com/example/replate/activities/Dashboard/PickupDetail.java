@@ -78,22 +78,21 @@ public class PickupDetail extends AppCompatActivity {
         buttonSubmitChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final PickupRequest pickupRequestEdited = new PickupRequest(
+                        user.getName(),
+                        editTextPickupTime.getText().toString(),
+                        editTextPickupDate.getText().toString(),
+                        editTextPickupInstructions.getText().toString(),
+                        editTextPickupNotes.getText().toString(),
+                        pickupRequest.getId(),
+                        pickupRequest.getLocationId()
+                );
                 new Thread(new Runnable() {
-                    PickupRequest pickupRequestEdited = new PickupRequest(
-                            user.getName(),
-                            editTextPickupTime.getText().toString(),
-                            editTextPickupDate.getText().toString(),
-                            editTextPickupInstructions.getText().toString(),
-                            editTextPickupNotes.getText().toString(),
-                            pickupRequest.getId()
-                    );
-
                     @Override
                     public void run() {
                         PickupRequestsDao.editPickupRequest(pickupRequestEdited, user.getToken());
                     }
                 }).start();
-
                 finish();
             }
         });
@@ -120,7 +119,6 @@ public class PickupDetail extends AppCompatActivity {
                         PickupRequestsDao.assignPickup(pickupRequest, user.getToken());
                     }
                 }).start();
-
                 finish();
             }
 

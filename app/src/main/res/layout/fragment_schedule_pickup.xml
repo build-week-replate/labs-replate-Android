@@ -48,7 +48,7 @@
 
         <EditText
             android:id="@+id/editText_schedule_pickup_additional_notes"
-            android:hint="Additional Notes"
+            android:hint="Additional Notes (optional)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/spinner_schedule_pickup_location"
