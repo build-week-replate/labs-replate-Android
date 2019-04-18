@@ -10,9 +10,14 @@ import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.activities.Dashboard.BusinessDashboard;
+import com.example.replate.activities.Dashboard.VolunteerDashBoard;
 import com.example.replate.daos.UserLoginDao;
 import com.example.replate.models.Business;
+import com.example.replate.models.User;
 import com.example.replate.models.Volunteer;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class VolunteerSignup extends AppCompatActivity {
 
@@ -28,12 +33,12 @@ public class VolunteerSignup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_signup);
 
-         editTextName = findViewById(R.id.editText_volunteer_signup_name);
-         editTextPhone = findViewById(R.id.editText_volunteer_signup_phone);
-         editTextEmail = findViewById(R.id.editText_volunteer_signup_email);
-         editTextPassword1 = findViewById(R.id.editText_volunteer_signup_password1);
-         editTextPassword2 = findViewById(R.id.editText_volunteer_signup_password2);
-         buttonSignup = findViewById(R.id.button_signup_volunteer_complete_signup);
+        editTextName = findViewById(R.id.editText_volunteer_signup_name);
+        editTextPhone = findViewById(R.id.editText_volunteer_signup_phone);
+        editTextEmail = findViewById(R.id.editText_volunteer_signup_email);
+        editTextPassword1 = findViewById(R.id.editText_volunteer_signup_password1);
+        editTextPassword2 = findViewById(R.id.editText_volunteer_signup_password2);
+        buttonSignup = findViewById(R.id.button_signup_volunteer_complete_signup);
 
 
         buttonSignup.setOnClickListener(new View.OnClickListener() {
@@ -47,9 +52,16 @@ public class VolunteerSignup extends AppCompatActivity {
                         @Override
                         public void run() {
                             String result = UserLoginDao.createNewAccount(volunteer);
-                            Intent intent = new Intent(getApplicationContext(), BusinessDashboard.class);
-                            intent.putExtra("resultString", result);
-                            startActivity(intent);
+                            Intent intent = new Intent(getApplicationContext(), VolunteerDashBoard.class);
+                            JSONObject jsonObject;
+                            try {
+                                jsonObject = new JSONObject(result);
+                                User user = new User(jsonObject);
+                                intent.putExtra("result", user);
+                                startActivity(intent);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }).start();
                 }

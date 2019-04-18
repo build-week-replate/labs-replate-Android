@@ -7,6 +7,6 @@
         <item name="colorAccent">@color/colorAccentGray</item>
         <item name="android:textViewStyle">@style/OpenSansTextViewStyle</item>
         <item name="android:buttonStyle">@style/PacificoButtonStyle</item>
-        <item name="android:editTextStyle">@style/OpenSansEditTextStyle</item>
+        <item name="editTextStyle">@style/OpenSansEditTextStyle</item>
     </style>
 </resources>

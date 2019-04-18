@@ -10,8 +10,14 @@ import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.activities.Dashboard.BusinessDashboard;
+import com.example.replate.daos.OfficeLocationsDao;
 import com.example.replate.daos.UserLoginDao;
 import com.example.replate.models.Business;
+import com.example.replate.models.OfficeLocation;
+import com.example.replate.models.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BusinessSignup extends AppCompatActivity {
 
@@ -20,7 +26,7 @@ public class BusinessSignup extends AppCompatActivity {
     EditText editTextEmail;
     EditText editTextPassword1;
     EditText editTextPassword2;
-    EditText editTextAddress;
+    EditText editTextOfficeAddress;
     EditText editTextOfficeName;
     EditText editTextOfficeEmail;
     Button buttonSignup;
@@ -37,7 +43,7 @@ public class BusinessSignup extends AppCompatActivity {
         editTextPassword1 = findViewById(R.id.editText_business_signup_password1);
         editTextPassword2 = findViewById(R.id.editText_business_signup_password2);
         editTextOfficeName = findViewById(R.id.editText_business_signup_office_name);
-        editTextAddress = findViewById(R.id.editText_business_signup_office_address);
+        editTextOfficeAddress = findViewById(R.id.editText_business_signup_office_address);
         editTextOfficeEmail = findViewById(R.id.editText_business_signup_email2);
         buttonSignup = findViewById(R.id.button_signup_business_complete_signup);
 
@@ -47,14 +53,28 @@ public class BusinessSignup extends AppCompatActivity {
 
                 if (checkFields()) { //runs if all fields are valid
                     final Business business = createBusiness();
+                    final OfficeLocation officeLocation = createLocation();
 
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
                             String result = UserLoginDao.createNewAccount(business);
                             Intent intent = new Intent(getApplicationContext(), BusinessDashboard.class);
-                            intent.putExtra("resultString", result);
-                            startActivity(intent);
+                            JSONObject jsonObject;
+                            try {
+                                jsonObject = new JSONObject(result);
+                                final User user = new User(jsonObject);
+                                new Thread(new Runnable() { //this thread will add the company location in the background
+                                    @Override
+                                    public void run() {
+                                        OfficeLocationsDao.createNewLocation(officeLocation, user.getToken());
+                                    }
+                                }).start();
+                                intent.putExtra("result", user);
+                                startActivity(intent);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }).start();
                 }
@@ -75,7 +95,7 @@ public class BusinessSignup extends AppCompatActivity {
             Toast.makeText(BusinessSignup.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
         else if (editTextOfficeName.getText().toString().equals(""))
             Toast.makeText(BusinessSignup.this, "Please Enter an Office Name", Toast.LENGTH_SHORT).show();
-        else if (editTextAddress.getText().toString().equals(""))
+        else if (editTextOfficeAddress.getText().toString().equals(""))
             Toast.makeText(BusinessSignup.this, "Please Enter an Address", Toast.LENGTH_SHORT).show();
         else return true;
         return false;
@@ -88,8 +108,16 @@ public class BusinessSignup extends AppCompatActivity {
                 Integer.valueOf(editTextPhone.getText().toString()),
                 editTextEmail.getText().toString(),
                 editTextPassword1.getText().toString(),
-                editTextAddress.getText().toString(),
+                editTextOfficeAddress.getText().toString(),
                 editTextOfficeName.getText().toString(),
+                editTextOfficeEmail.getText().toString());
+    }
+
+    private OfficeLocation createLocation() {
+
+        return new OfficeLocation(
+                editTextOfficeName.getText().toString(),
+                editTextOfficeAddress.getText().toString(),
                 editTextOfficeEmail.getText().toString());
     }
 }

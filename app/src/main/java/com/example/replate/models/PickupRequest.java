@@ -17,14 +17,18 @@ public class PickupRequest implements Serializable {
     private int volunteer_id; //null if not taken
     private int company_id;
     private int id;
+    private int locationId;
+    private String officeaddress;
+    private String officeName;
+    private String officeEmail;
 
-    public PickupRequest(String name, String time, String date, String instructions, String notes, int id) {
+    public PickupRequest(String name, String time, String date, String instructions, String notes, int locationId) {
         this.name = name;
         this.time = time;
         this.date = date;
         this.instructions = instructions;
         this.notes = notes;
-        this.id = id;
+        this.locationId = locationId;
     }
     public PickupRequest(String name, String time, String date, String instructions, String notes) {
         this(name, time, date, instructions, notes, 0);
@@ -38,12 +42,21 @@ public class PickupRequest implements Serializable {
             this.instructions = temp.getString("pickup_comment");
             this.company_id = temp.getInt("company_id");
             this.id = temp.getInt("id");
+            this.taken = temp.getBoolean("taken");
+            this.officeName = temp.getString("office_name");
+            this.officeaddress = temp.getString("office_address");
+
+            //these fields are optional/may be null
+            try {
+                this.officeEmail = temp.getString("office_email");
+            }catch (JSONException e) {
+                e.printStackTrace();
+            }
             try {
                 this.volunteer_id = temp.getInt("volunteer_id");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            this.taken = temp.getBoolean("taken");
             try {
                 this.notes = temp.getString("pickup_additional_comment");
             } catch (JSONException e) {
@@ -85,7 +98,22 @@ public class PickupRequest implements Serializable {
     public int getCompany_id() {
         return company_id;
     }
+
     public int getId() {
         return id;
     }
+
+    public String getOfficeAddress() {
+        return officeaddress;
+    }
+
+    public String getOfficeName() {
+        return officeName;
+    }
+
+    public String getOfficeEmail() {
+        return officeEmail;
+    }
+
+    public int getLocationId() { return locationId; }
 }

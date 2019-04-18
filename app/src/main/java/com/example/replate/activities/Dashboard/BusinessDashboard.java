@@ -11,17 +11,22 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.replate.R;
+import com.example.replate.activities.Dashboard.Fragments.AddLocationFragment;
 import com.example.replate.activities.Dashboard.Fragments.PickupsDisplayFragment;
 import com.example.replate.activities.Dashboard.Fragments.SchedulePickupFragment;
+import com.example.replate.daos.OfficeLocationsDao;
 import com.example.replate.daos.PickupRequestsDao;
+import com.example.replate.daos.UserLoginDao;
+import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;
 
-public class BusinessDashboard extends AppCompatActivity implements SchedulePickupFragment.OnSubmitListener {
+public class BusinessDashboard extends AppCompatActivity implements SchedulePickupFragment.OnSubmitListener, AddLocationFragment.OnAddLocationListener {
 
 
     Button buttonSchedulePickup;
     Button buttonMyPickups;
+    Button buttonAddLocation;
     ConstraintLayout constraintLayout;
     ConstraintSet constraintSet;
     Fragment fragment;
@@ -33,13 +38,24 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         setContentView(R.layout.activity_business_dashboard);
 
         Intent intent = getIntent();
-        user = (User)intent.getSerializableExtra("result");
+        user = (User) intent.getSerializableExtra("result");
 
         buttonSchedulePickup = findViewById(R.id.button_business_dashboard_schedule_pickup);
         buttonMyPickups = findViewById(R.id.button_business_dashboard_my_scheduled_pickups);
+        buttonAddLocation = findViewById(R.id.button_business_dashboard_add_location);
         constraintLayout = findViewById(R.id.constraint_layout_business_dashboard_parent);
         constraintSet = new ConstraintSet();
         constraintSet.clone(constraintLayout);
+
+        buttonAddLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                fragment = newInstance3(user);
+                ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
+                ft.commit();
+            }
+        });
 
 
         buttonSchedulePickup.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +63,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             public void onClick(View v) {
                 // Begin the transaction
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance(user.getName(), user.getToken());
+                fragment = newInstance(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
             }
@@ -57,7 +73,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                PickupsDisplayFragment pickupsDisplayFragment = newInstance2(user.getName(), user);
+                PickupsDisplayFragment pickupsDisplayFragment = newInstance2(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, pickupsDisplayFragment);
                 ft.commitNow();
                 pickupsDisplayFragment.getCompanyPickups(user.getId());
@@ -80,20 +96,40 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
         }).start();
     }
 
+    @Override
+    public void onAddLocationListener(final OfficeLocation officeLocation, final String token) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.hide(fragment);
+        ft.commit();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OfficeLocationsDao.createNewLocation(officeLocation, token);
+            }
+        }).start();
 
-    public static SchedulePickupFragment newInstance(String username, String token) {
+    }
+
+
+    public static SchedulePickupFragment newInstance(User user) {
         SchedulePickupFragment fragment = new SchedulePickupFragment();
         Bundle args = new Bundle();
-        args.putString("username", username);
-        args.putString("token", token);
+        args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public static PickupsDisplayFragment newInstance2(String username, User user) {
+    public static PickupsDisplayFragment newInstance2(User user) {
         PickupsDisplayFragment fragment = new PickupsDisplayFragment();
         Bundle args = new Bundle();
-        args.putString("username", username);
+        args.putSerializable("user", user);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static AddLocationFragment newInstance3(User user) {
+        AddLocationFragment fragment = new AddLocationFragment();
+        Bundle args = new Bundle();
         args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
@@ -105,3 +141,4 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
 
     }
 }
+

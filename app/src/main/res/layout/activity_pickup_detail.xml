@@ -4,15 +4,26 @@
     android:id="@+id/fragment_schedule_pickup_display"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="20dp"
     tools:context=".activities.Dashboard.Fragments.SchedulePickupFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="0dp">
 
+        <EditText
+            android:id="@+id/editText_detail_schedule_pickup_name"
+            android:hint="Pickup Name"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_date"
@@ -23,18 +34,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_name" />
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_time"
             android:hint="Pickup Time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_instructions"
+            app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_office_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_detail_schedule_pickup_date" />
+
+        <EditText
+            android:id="@+id/editText_detail_schedule_pickup_office_name"
+            android:hint="Office Name"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_office_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_detail_schedule_pickup_time" />
+
+        <EditText
+            android:id="@+id/editText_detail_schedule_pickup_office_address"
+            android:hint="Office Address"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_instructions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_detail_schedule_pickup_office_name" />
+
+
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_instructions"
@@ -45,7 +82,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_time" />
+            app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_office_address" />
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_additional_notes"

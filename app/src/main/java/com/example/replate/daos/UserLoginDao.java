@@ -1,7 +1,7 @@
 package com.example.replate.daos;
 
 import com.example.replate.adapters.NetworkAdapter;
-import com.example.replate.models.Business;
+import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.User;
 import com.example.replate.models.Volunteer;
 
@@ -18,22 +18,26 @@ public class UserLoginDao {
 
     public static String createNewAccount(User user) {
 
-        JSONObject jsonObject = toJson(user);
+        JSONObject jsonObject = userToJson(user);
         Map<String, String> header = new HashMap<>();
         header.put("Content-Type", "application/json");
         return NetworkAdapter.httpRequest(BASE_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
+
+
     public static String loginToAccount(String email, String password) {
 
-        JSONObject jsonObject = toJson(email, password);
+        JSONObject jsonObject = userToJson(email, password);
         Map<String, String> header = new HashMap<>();
         header.put("Content-Type", "application/json");
         return NetworkAdapter.httpRequest(BASE_URL + LOGIN_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
 
-    private static JSONObject toJson(User user) { //converts user object to json
+
+
+    private static JSONObject userToJson(User user) { //converts user object to json
         String type = "company";
         if (user instanceof Volunteer) type = "volunteer";
         StringBuilder stringBuilder = new StringBuilder();
@@ -53,7 +57,7 @@ public class UserLoginDao {
         }
     }
 
-    public static JSONObject toJson(String email, String password) { //converts username and pw to json
+    public static JSONObject userToJson(String email, String password) { //converts username and pw to json
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder

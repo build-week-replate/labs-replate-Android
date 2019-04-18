@@ -8,7 +8,6 @@
 
     <!-- edittext style not working -->
     <style name="OpenSansEditTextStyle" parent="android:Widget.EditText">
-        <item name="android:fontFamily">@font/pacifico</item>
         <item name="android:fontStyle">@font/pacifico</item>
     </style>
 

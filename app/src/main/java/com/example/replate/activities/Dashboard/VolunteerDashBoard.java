@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.replate.R;
 import com.example.replate.activities.Dashboard.Fragments.PickupsDisplayFragment;
@@ -16,6 +17,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
     PickupsDisplayFragment fragment;
     Button buttonMyPickups;
     Button buttonAllPickups;
+    TextView textViewTopText;
     User user;
 
 
@@ -26,6 +28,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
         setContentView(R.layout.activity_volunteer_dashboard);
         buttonMyPickups = findViewById(R.id.button_volunteer_dashboard_my_pickups);
         buttonAllPickups = findViewById(R.id.button_volunteer_dashboard_all_pickups);
+        textViewTopText = findViewById(R.id.textView_volunteer_dashboard_top_text);
 
 
         Intent intent = getIntent();
@@ -37,7 +40,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
         ft.commitNow();
         fragment.getAllPickups();
 
-        buttonMyPickups.setOnClickListener(new View.OnClickListener() {
+        buttonMyPickups.setOnClickListener(new View.OnClickListener() { //MY PICKUPS
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -47,12 +50,13 @@ public class VolunteerDashBoard extends AppCompatActivity {
                 fragment.getVolunteerPickups(user.getId());
                 buttonAllPickups.setVisibility(View.VISIBLE);
                 buttonMyPickups.setVisibility(View.GONE);
+                textViewTopText.setText("My Pickups");
             }
         });
 
         buttonAllPickups.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { //ALL PICKUPS
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 fragment = newInstance(user.getName(), user);
                 ft.replace(R.id.frame_layout_volunteer_pickups, fragment);
@@ -60,6 +64,7 @@ public class VolunteerDashBoard extends AppCompatActivity {
                 fragment.getAllPickups();
                 buttonAllPickups.setVisibility(View.GONE);
                 buttonMyPickups.setVisibility(View.VISIBLE);
+                textViewTopText.setText("Available Pickups Near Me");
             }
         });
     }

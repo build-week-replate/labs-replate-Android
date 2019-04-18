@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraint_layout_volunteer_login_root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.Login.LoginVolunteerActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView_volunteer_login_replate_logo"
+        android:layout_width="274dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/replate_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_volunteer_login"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:indeterminateDrawable="@drawable/progress"
+        app:layout_constraintBottom_toTopOf="@id/edit_text_email_volunteer_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView_volunteer_login_replate_logo"
+        app:layout_constraintVertical_bias="0.828" />
 
     <EditText
         android:id="@+id/edit_text_email_volunteer_login"
