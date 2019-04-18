@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/constraint_layout_business_login_root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +8,7 @@
     tools:context=".activities.Login.LoginBusinessActivity">
 
     <ImageView
+        android:id="@+id/imageView_business_login_replate_logo"
         android:layout_width="274dp"
         android:layout_height="40dp"
         android:layout_marginStart="68dp"
@@ -14,6 +16,18 @@
         android:src="@drawable/replate_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_business_login"
+        android:visibility="gone"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:indeterminateDrawable="@drawable/progress"
+        app:layout_constraintBottom_toTopOf="@id/edit_text_email_business_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView_business_login_replate_logo"
+        app:layout_constraintVertical_bias="0.828" />
 
 
     <EditText
