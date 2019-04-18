@@ -15,7 +15,9 @@ import com.example.replate.models.User;
 public class PickupDetail extends AppCompatActivity {
 
 
-
+    public static final String RESULT = "result";
+    public static final String USER = "user";
+    public static final String VOLUNTEER = "volunteer";
     EditText editTextPickupName;
     EditText editTextPickupDate;
     EditText editTextPickupTime;
@@ -36,8 +38,8 @@ public class PickupDetail extends AppCompatActivity {
         setContentView(R.layout.activity_pickup_detail);
 
         Intent intent = getIntent();
-        pickupRequest = (PickupRequest)intent.getSerializableExtra("result");
-        user = (User)intent.getSerializableExtra("user");
+        pickupRequest = (PickupRequest)intent.getSerializableExtra(RESULT);
+        user = (User)intent.getSerializableExtra(USER);
 
         editTextPickupName = findViewById(R.id.editText_detail_schedule_pickup_name);
         editTextPickupDate = findViewById(R.id.editText_detail_schedule_pickup_date);
@@ -59,7 +61,7 @@ public class PickupDetail extends AppCompatActivity {
         editTextPickupInstructions.setText(pickupRequest.getInstructions());
         editTextPickupNotes.setText(pickupRequest.getNotes());
 
-        if (user.getType().equals("volunteer")) {
+        if (user.getType().equals(VOLUNTEER)) {
             editTextPickupDate.setEnabled(false);
             editTextPickupTime.setEnabled(false);
             editTextPickupInstructions.setEnabled(false);
