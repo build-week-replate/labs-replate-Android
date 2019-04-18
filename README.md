@@ -6,15 +6,19 @@
 ## Instructions to install on your android phone
 ### 1-Navigate your android device to this page.
 
-### 2-Tap the .apk file listed above
+### 2-Request Desktop site
+
+<img src="https://github.com/build-week-replate/labs-replate-Android/blob/master/install0.png">
+
+### 3-Click the .apk file listed above
 
 <img src="https://github.com/build-week-replate/labs-replate-Android/blob/master/Install1.png">
 
-### 3-Download that file to your phone
+### 4-Download that file to your phone
 
 <img src="https://github.com/build-week-replate/labs-replate-Android/blob/master/install2.png">
 
-### 4-Go to your Downloads folder and select the .apk file, give permission to install non-play-store app
+### 5-Go to your Downloads folder and select the .apk file, give permission to install non-play-store app
 
 ### DONE!
 
@@ -22,11 +26,15 @@
 ## Project Credits
 
 ### Home Page Devs
-    Alyssa Hatfield
-    Kayla Crow
+    Alyssa Hatfield - alyssajane.me
+[Her RePlate Front Page](https://alyssajane.me)
+    
+    Kayla Crow - 
+[Her Replate Front Page](https://build-week-replate.github.io/labs-replate-user-interface-design-2/)
 
 ### Back-End Devs
-    Vladimir Turcan
+    Vladimir Turcan 
+[His Github Repo](https://github.com/build-week-replate/labs-replate-BE)
 
 ### Front-End Devs for Web
     Brandi Bailey
