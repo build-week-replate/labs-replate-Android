@@ -100,8 +100,10 @@ public class LoginVolunteerActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(User user) {
             if (user == null) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(mContext, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
             } else if (user.getType().equals("company")) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(mContext, "You are in the wrong login screen", Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(mContext, VolunteerDashBoard.class);

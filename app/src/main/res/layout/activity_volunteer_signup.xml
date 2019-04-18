@@ -83,6 +83,7 @@
 
             <Button
                 android:id="@+id/button_signup_volunteer_complete_signup"
+                android:width="120dp"
                 android:text="Sign Up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

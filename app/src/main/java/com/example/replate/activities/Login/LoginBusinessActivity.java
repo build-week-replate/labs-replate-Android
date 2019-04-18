@@ -103,8 +103,10 @@ public class LoginBusinessActivity extends AppCompatActivity {
         protected void onPostExecute(User user) {
             if (user == null) {
                 Toast.makeText(mContext, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
             } else if (user.getType().equals("volunteer")) {
                 Toast.makeText(mContext, "You are in the wrong login screen", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
             } else {
                 Intent intent = new Intent(mContext, BusinessDashboard.class);
                 intent.putExtra("result", user);
