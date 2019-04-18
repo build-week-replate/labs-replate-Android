@@ -13,25 +13,24 @@ public class PickupRequestsDao {
 
     private static final String PICKUPS_URL = "https://replate-backend-turcan.herokuapp.com/api/schedules/";
     private static final String TAKE_URL = "/take";
-
-
+    private static final String AUTHORIZATION = "Authorization";
+    private static final String CONTENT_TYPE = "Content-Type";
+    private static final String APPLICATION_JSON = "application/json";
 
 
     public static String getAllPickups(String token){
-        Map<String, String> header = new HashMap();
-        header.put("Authorization", token);
-        header.put("Content-Type", "application/json");
-        String result = NetworkAdapter.httpRequest(PICKUPS_URL, NetworkAdapter.GET, null, header);
-        return result;
+        Map<String, String> header = new HashMap<>();
+        header.put(AUTHORIZATION, token);
+        header.put(CONTENT_TYPE, APPLICATION_JSON);
+        return NetworkAdapter.httpRequest(PICKUPS_URL, NetworkAdapter.GET, null, header);
     }
 
-    public static String postPickupRequest(PickupRequest pickupRequest, String token){
+    public static void postPickupRequest(PickupRequest pickupRequest, String token){
         JSONObject jsonObject = toJson(pickupRequest);
-        Map<String, String> header = new HashMap();
-        header.put("Authorization", token);
-        header.put("Content-Type", "application/json");
-        String result = NetworkAdapter.httpRequest(PICKUPS_URL, NetworkAdapter.POST, jsonObject, header);
-        return result;
+        Map<String, String> header = new HashMap<>();
+        header.put(AUTHORIZATION, token);
+        header.put(CONTENT_TYPE, APPLICATION_JSON);
+        NetworkAdapter.httpRequest(PICKUPS_URL, NetworkAdapter.POST, jsonObject, header);
     }
 
 
@@ -52,31 +51,28 @@ public class PickupRequestsDao {
         }
     }
 
-    public static String editPickupRequest(PickupRequest pickupRequest, String token){
+    public static void editPickupRequest(PickupRequest pickupRequest, String token){
         JSONObject jsonObject = toJson(pickupRequest);
-        Map<String, String> header = new HashMap();
-        header.put("Authorization", token);
-        header.put("Content-Type", "application/json");
-        String result = NetworkAdapter.httpRequest(PICKUPS_URL + pickupRequest.getId(), NetworkAdapter.PATCH, jsonObject, header);
-        return result;
+        HashMap<String, String> header = new HashMap<>();
+        header.put(AUTHORIZATION, token);
+        header.put(CONTENT_TYPE, APPLICATION_JSON);
+        NetworkAdapter.httpRequest(PICKUPS_URL + pickupRequest.getId(), NetworkAdapter.PATCH, jsonObject, header);
     }
 
-    public static String assignPickup(PickupRequest pickupRequest, String token) {
+    public static void assignPickup(PickupRequest pickupRequest, String token) {
         JSONObject jsonObject = toJson(pickupRequest);
-        Map<String, String> header = new HashMap();
-        header.put("Authorization", token);
-        header.put("Content-Type", "application/json");
-        String result = NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()) + TAKE_URL, NetworkAdapter.PATCH, jsonObject, header);
-        return result;
+        Map<String, String> header = new HashMap<>();
+        header.put(AUTHORIZATION, token);
+        header.put(CONTENT_TYPE, APPLICATION_JSON);
+        NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()) + TAKE_URL, NetworkAdapter.PATCH, jsonObject, header);
     }
 
-    public static String deletePickup(PickupRequest pickupRequest, String token) {
+    public static void deletePickup(PickupRequest pickupRequest, String token) {
         JSONObject jsonObject = toJson(pickupRequest);
-        Map<String, String> header = new HashMap();
-        header.put("Authorization", token);
-        header.put("Content-Type", "application/json");
-        String result = NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()), NetworkAdapter.DELETE, jsonObject, header);
-        return result;
+        Map<String, String> header = new HashMap<>();
+        header.put(AUTHORIZATION, token);
+        header.put(CONTENT_TYPE, APPLICATION_JSON);
+        NetworkAdapter.httpRequest(PICKUPS_URL + String.valueOf(pickupRequest.getId()), NetworkAdapter.DELETE, jsonObject, header);
     }
 
 }
