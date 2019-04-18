@@ -32,14 +32,12 @@ public class SchedulePickupFragment extends Fragment {
     EditText editTextPickupInstructions;
     EditText editTextPickupNotes;
     Spinner spinnerLocation;
-    String username;
     User user;
     ArrayList<OfficeLocation> locations;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        username = getArguments().getString("username", null);
         user = (User)getArguments().getSerializable("user");
     }
 
@@ -84,7 +82,7 @@ public class SchedulePickupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                PickupRequest pickupRequest = new PickupRequest(
-                       username,
+                       user.getName(),
                        editTextPickupTime.getText().toString(),
                        editTextPickupDate.getText().toString(),
                        editTextPickupInstructions.getText().toString(),

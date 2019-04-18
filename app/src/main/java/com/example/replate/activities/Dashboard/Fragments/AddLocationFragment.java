@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.replate.R;
 import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
+import com.example.replate.models.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,8 +30,7 @@ public class AddLocationFragment extends Fragment {
     EditText editTextLocationAddress;
     EditText editTextLocationEmail;
     Button buttonAddLocation;
-    String username;
-    String token;
+    User user;
 
 
     public AddLocationFragment() {
@@ -39,8 +39,7 @@ public class AddLocationFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        username = getArguments().getString("username", null);
-        token = getArguments().getString("token", null);
+        user = (User)getArguments().getSerializable("user");
     }
 
     @Override
@@ -67,7 +66,7 @@ public class AddLocationFragment extends Fragment {
                         editTextLocationAddress.getText().toString(),
                         editTextLocationEmail.getText().toString()
                 );
-                addLocationRequest(v, officeLocation, token);
+                addLocationRequest(v, officeLocation, user.getToken());
             }
         });
     }

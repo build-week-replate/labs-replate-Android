@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 public class PickupsDisplayFragment extends Fragment {
 
-    String username;
     User user;
     ArrayList<PickupRequest> pickupRequests = new ArrayList<>();
     RecyclerView recyclerView;
@@ -38,7 +37,6 @@ public class PickupsDisplayFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        username = getArguments().getString("username", null);
         user = (User)getArguments().getSerializable("user");
         super.onAttach(context);
     }

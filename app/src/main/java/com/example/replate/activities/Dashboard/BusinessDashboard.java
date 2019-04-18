@@ -51,7 +51,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance3(user.getName(), user);
+                fragment = newInstance3(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
             }
@@ -63,7 +63,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             public void onClick(View v) {
                 // Begin the transaction
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                fragment = newInstance(user.getName(), user);
+                fragment = newInstance(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, fragment);
                 ft.commit();
             }
@@ -73,7 +73,7 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
             @Override
             public void onClick(View v) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                PickupsDisplayFragment pickupsDisplayFragment = newInstance2(user.getName(), user);
+                PickupsDisplayFragment pickupsDisplayFragment = newInstance2(user);
                 ft.replace(R.id.frame_layout_business_dashboard_center, pickupsDisplayFragment);
                 ft.commitNow();
                 pickupsDisplayFragment.getCompanyPickups(user.getId());
@@ -111,28 +111,25 @@ public class BusinessDashboard extends AppCompatActivity implements SchedulePick
     }
 
 
-    public static SchedulePickupFragment newInstance(String username, User user) {
+    public static SchedulePickupFragment newInstance(User user) {
         SchedulePickupFragment fragment = new SchedulePickupFragment();
         Bundle args = new Bundle();
-        args.putString("username", username);
         args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public static PickupsDisplayFragment newInstance2(String username, User user) {
+    public static PickupsDisplayFragment newInstance2(User user) {
         PickupsDisplayFragment fragment = new PickupsDisplayFragment();
         Bundle args = new Bundle();
-        args.putString("username", username);
         args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public static AddLocationFragment newInstance3(String username, User user) {
+    public static AddLocationFragment newInstance3(User user) {
         AddLocationFragment fragment = new AddLocationFragment();
         Bundle args = new Bundle();
-        args.putString("username", username);
         args.putSerializable("user", user);
         fragment.setArguments(args);
         return fragment;
