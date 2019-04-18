@@ -17,10 +17,15 @@ import com.example.replate.models.User;
 import java.util.ArrayList;
 
 public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.ViewHolder> {
+    private static final int DESCRIPTION_MAX_LENGTH = 45;
+    private static final String USER = "user";
+    private static final String RESULT = "result";
+    private static final String ELIPSES = "..";
+
     private ArrayList<PickupRequest> pickupRequests;
     private User user;
 
-    public PickupsListAdapter(ArrayList<PickupRequest> myDataset, User user) {
+    PickupsListAdapter(ArrayList<PickupRequest> myDataset, User user) {
         this.pickupRequests = myDataset;
         this.user = user;
     }
@@ -31,8 +36,7 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view_single_element, parent, false);
 
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override
@@ -41,27 +45,28 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
         final PickupRequest pickupRequest = pickupRequests.get(i);
 
         if(pickupRequest.getVolunteer_id() == user.getId()) {
-            viewHolder.cardView.setCardBackgroundColor(viewHolder.cardView.getResources().getColor(R.color.colorPrimaryLightGreen));
+            viewHolder.cardViewParent.setCardBackgroundColor(viewHolder.cardViewParent.getResources().getColor(R.color.colorPrimaryLightGreen));
         }else if (pickupRequest.isTaken()) {
-            viewHolder.cardView.setCardBackgroundColor(viewHolder.cardView.getResources().getColor(R.color.colorAccentMediumGray));
+            viewHolder.cardViewParent.setCardBackgroundColor(viewHolder.cardViewParent.getResources().getColor(R.color.colorAccentMediumGray));
         }
-        viewHolder.textView.setText(pickupRequest.getName());
-        viewHolder.textView2.setText(pickupRequest.getDate());
-        viewHolder.textView3.setText(pickupRequest.getTime());
-        viewHolder.textView5.setText(pickupRequest.getOfficeName());
-        viewHolder.textView6.setText(pickupRequest.getOfficeAddress());
-        if (pickupRequest.getInstructions().length() > 50) {
-            viewHolder.textView4.setText(pickupRequest.getInstructions().substring(0, 50) + "...");
+        viewHolder.textViewName.setText(pickupRequest.getName());
+        viewHolder.textViewDate.setText(pickupRequest.getDate());
+        viewHolder.textViewTime.setText(pickupRequest.getTime());
+        viewHolder.textViewLocationName.setText(pickupRequest.getOfficeName());
+        viewHolder.textViewLocationAddress.setText(pickupRequest.getOfficeAddress());
+        if (pickupRequest.getInstructions().length() > DESCRIPTION_MAX_LENGTH) {
+            String temp = (pickupRequest.getInstructions().substring(0, DESCRIPTION_MAX_LENGTH) + ELIPSES);
+            viewHolder.textViewInstructions.setText(temp);
         }
         else {
-            viewHolder.textView4.setText(pickupRequest.getInstructions());
+            viewHolder.textViewInstructions.setText(pickupRequest.getInstructions());
         }
-        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+        viewHolder.cardViewParent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PickupDetail.class);
-                intent.putExtra("user", user);
-                intent.putExtra("result", pickupRequest);
+                intent.putExtra(USER, user);
+                intent.putExtra(RESULT, pickupRequest);
                 v.getContext().startActivity(intent);
             }
         });
@@ -72,24 +77,24 @@ public class PickupsListAdapter extends RecyclerView.Adapter<PickupsListAdapter.
         return pickupRequests.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
-        TextView textView2;
-        TextView textView3;
-        TextView textView4;
-        TextView textView5;
-        TextView textView6;
-        CardView cardView;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewName;
+        TextView textViewDate;
+        TextView textViewTime;
+        TextView textViewInstructions;
+        TextView textViewLocationName;
+        TextView textViewLocationAddress;
+        CardView cardViewParent;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.recycler_single_element_text1);
-            textView2 = itemView.findViewById(R.id.recycler_single_element_text2);
-            textView3 = itemView.findViewById(R.id.recycler_single_element_text3);
-            textView4 = itemView.findViewById(R.id.recycler_single_element_text4);
-            textView5 = itemView.findViewById(R.id.recycler_single_element_text5);
-            textView6 = itemView.findViewById(R.id.recycler_single_element_text6);
-            cardView = itemView.findViewById(R.id.recycler_cardView);
+            textViewName = itemView.findViewById(R.id.textView_recycler_single_element_name);
+            textViewDate = itemView.findViewById(R.id.textView_recycler_single_element_date);
+            textViewTime = itemView.findViewById(R.id.textView_recycler_single_element_time);
+            textViewInstructions = itemView.findViewById(R.id.textView_recycler_single_element_instructions);
+            textViewLocationName = itemView.findViewById(R.id.textView_recycler_single_element_location_name);
+            textViewLocationAddress = itemView.findViewById(R.id.textView_recycler_single_element_location_address);
+            cardViewParent = itemView.findViewById(R.id.recycler_cardView);
         }
     }
 }

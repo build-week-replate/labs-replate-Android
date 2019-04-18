@@ -21,10 +21,15 @@ import com.example.replate.daos.OfficeLocationsDao;
 import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;
+
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SchedulePickupFragment extends Fragment {
 
+    public static final String USER = "user";
+    public static final String MUST_IMPLEMENT_SCHEDULE_PICKUP_ON_SUBMIT_LISTENER =
+            " must implement SchedulePickup.OnSubmitListener";
     OnSubmitListener listener;
 
     EditText editTextPickupDate;
@@ -38,15 +43,18 @@ public class SchedulePickupFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        user = (User)getArguments().getSerializable("user");
+        if (getArguments() != null) {
+            user = (User) getArguments().getSerializable(USER);
+        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_schedule_pickup, container, false);
     }
+
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -62,33 +70,36 @@ public class SchedulePickupFragment extends Fragment {
             @Override
             public void run() {
                 locations = OfficeLocationsDao.getBusinessLocationsList(user);
-                final ArrayList<String> locationNames = new ArrayList<>(locations.size());
-                for (OfficeLocation officeLocation: locations) {
-                    locationNames.add(officeLocation.getOfficeName() + " - " + officeLocation.getOfficeAddress());
-                }
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(view.getContext(),
-                                R.layout.spinner_item, locationNames);
-                        dataAdapter.setDropDownViewResource(R.layout.spinner_item);
-                        spinnerLocation.setAdapter(dataAdapter);
+                final ArrayList<String> locationNames;
+                if (locations != null) {
+                    locationNames = new ArrayList<>(locations.size());
+                    for (OfficeLocation officeLocation : locations) {
+                        locationNames.add(officeLocation.getOfficeName() + " - " + officeLocation.getOfficeAddress());
                     }
-                });
+                    Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(view.getContext(),
+                                    R.layout.spinner_item, locationNames);
+                            dataAdapter.setDropDownViewResource(R.layout.spinner_item);
+                            spinnerLocation.setAdapter(dataAdapter);
+                        }
+                    });
+                }
             }
         }).start();
 
         buttonSchedulePickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               PickupRequest pickupRequest = new PickupRequest(
-                       user.getName(),
-                       editTextPickupTime.getText().toString(),
-                       editTextPickupDate.getText().toString(),
-                       editTextPickupInstructions.getText().toString(),
-                       editTextPickupNotes.getText().toString(),
-                       spinnerLocation.getSelectedItemPosition()+1 //+1 - the backend doesn't have an element 0
-               );
+                PickupRequest pickupRequest = new PickupRequest(
+                        user.getName(),
+                        editTextPickupTime.getText().toString(),
+                        editTextPickupDate.getText().toString(),
+                        editTextPickupInstructions.getText().toString(),
+                        editTextPickupNotes.getText().toString(),
+                        spinnerLocation.getSelectedItemPosition() + 1 //+1 - the backend doesn't have an element 0
+                );
 
                 submitPickupRequest(v, pickupRequest, user.getToken());
             }
@@ -102,17 +113,17 @@ public class SchedulePickupFragment extends Fragment {
             listener = (OnSubmitListener) context;
         } else {
             throw new ClassCastException(context.toString()
-                    + " must implement SchedulePickup.OnSubmitListener");
+                    + MUST_IMPLEMENT_SCHEDULE_PICKUP_ON_SUBMIT_LISTENER);
         }
-    }
-    public interface OnSubmitListener {
-        void onSubmitPickup(PickupRequest pickupRequest, String token);
     }
 
     public void submitPickupRequest(View v, PickupRequest pickupRequest, String token) {
         listener.onSubmitPickup(pickupRequest, token);
     }
 
+    public interface OnSubmitListener {
+        void onSubmitPickup(PickupRequest pickupRequest, String token);
+    }
 
 
 }
