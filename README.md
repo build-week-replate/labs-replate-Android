@@ -9,6 +9,7 @@ Replate is an web platform that connects businesses with excess food at the end 
 ## Current Release
 -Businesses and Volunteers can create accounts and login<br>
 -Businesses can post-edit and delete requests<br>
+-Businesses can add multiple locations
 -Volunteers can view all requests<br>
 -Volunteers can accept posted requests<br>
 -Volunteers can view and complete their requests<br>
