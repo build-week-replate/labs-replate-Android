@@ -17,12 +17,6 @@ public class OfficeLocation {
         this.officeEmail = officeEmail;
     }
 
-    public OfficeLocation(String officeName, String officeAddress,  String officeEmail, int id, int businessId) {
-        this(officeName, officeAddress, officeEmail);
-        this.id = id;
-        this.businessId = businessId;
-    }
-
     public OfficeLocation(JSONObject jsonObject) {
         try {
             this.officeName = jsonObject.getString("office_name");
@@ -51,5 +45,4 @@ public class OfficeLocation {
 
     public int getId() { return id; }
 
-    public int getBusinessId() { return businessId; }
 }

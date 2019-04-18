@@ -1,7 +1,5 @@
 package com.example.replate.models;
 
-import android.support.annotation.Nullable;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,7 +18,7 @@ public class PickupRequest implements Serializable {
     private int locationId;
     private String officeaddress;
     private String officeName;
-    private String officeEmail;
+    private String officeEmail; //optional
 
     public PickupRequest(String name, String time, String date, String instructions, String notes, int id, int locationId) {
         this.name = name;

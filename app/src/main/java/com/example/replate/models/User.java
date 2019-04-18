@@ -11,7 +11,6 @@ public class User implements Serializable {
     int phoneNumber;
     String password;
     private String token;
-    private String encryptedPass;
     private String type;
     private int id;
 
@@ -22,7 +21,6 @@ public class User implements Serializable {
             name = temp.getString("name");
             emailAddress = temp.getString("email");
             phoneNumber = temp.getInt("phone");
-            encryptedPass = temp.getString("password");
             type = temp.getString("type");
             id = temp.getInt("id");
             token = jsonObject.getString("token");
