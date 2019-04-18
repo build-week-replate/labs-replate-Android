@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="@string/add_location"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/editText_schedule_pickup_date"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/editText_add_location_office_email" />
 
     </android.support.constraint.ConstraintLayout>

@@ -13,11 +13,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.replate.R;
 import com.example.replate.models.OfficeLocation;
 import com.example.replate.models.PickupRequest;
 import com.example.replate.models.User;
+
+import java.util.regex.Pattern;
 
 
 public class AddLocationFragment extends Fragment {
@@ -65,12 +68,14 @@ public class AddLocationFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                OfficeLocation officeLocation = new OfficeLocation(
-                        editTextLocationName.getText().toString(),
-                        editTextLocationAddress.getText().toString(),
-                        editTextLocationEmail.getText().toString()
-                );
-                addLocationRequest(officeLocation, user.getToken());
+                if (validateFields()) { //checks all fields
+                    OfficeLocation officeLocation = new OfficeLocation(
+                            editTextLocationName.getText().toString(),
+                            editTextLocationAddress.getText().toString(),
+                            editTextLocationEmail.getText().toString()
+                    );
+                    addLocationRequest(officeLocation, user.getToken());
+                }
             }
         });
     }
@@ -93,5 +98,28 @@ public class AddLocationFragment extends Fragment {
     public void addLocationRequest(OfficeLocation officeLocation, String token) {
         listener.onAddLocationListener(officeLocation, token);
     }
+
+    private boolean validateFields() {
+        if (editTextLocationName.getText().toString().equals("")){
+            Toast.makeText(getContext(),"Invalid Office Name", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (editTextLocationAddress.getText().toString().equals("")) {
+            Toast.makeText(getContext(),"Invalid Office Address", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (editTextLocationEmail.getText().toString().equals("")) {
+            return true;
+        }
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ //builds pattern to check if email is valid
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if(!pat.matcher(editTextLocationEmail.getText().toString()).matches()) {
+            Toast.makeText(getContext(),"Invalid Email Address", Toast.LENGTH_SHORT).show();
+            return false;
+        } else return true;
+    }
+
 
 }

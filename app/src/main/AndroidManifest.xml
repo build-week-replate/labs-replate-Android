@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Dashboard.PickupDetail"></activity>
+        <activity android:name=".activities.Dashboard.PickupDetail"/>
         <activity android:name=".activities.Signup.VolunteerSignup" />
         <activity android:name=".activities.Signup.BusinessSignup" />
         <activity android:name=".activities.Dashboard.BusinessDashboard" />
@@ -20,6 +20,7 @@
         <activity android:name=".activities.Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

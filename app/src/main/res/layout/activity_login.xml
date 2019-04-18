@@ -9,12 +9,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="322dp"
-        android:layout_height="240dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="280sp"
+        android:layout_height="150sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_splash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.798"
         app:srcCompat="@drawable/replate_logo" />
 
     <TextView
