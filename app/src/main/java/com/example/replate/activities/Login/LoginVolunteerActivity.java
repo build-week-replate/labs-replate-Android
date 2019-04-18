@@ -26,6 +26,8 @@ import org.json.JSONObject;
 
 public class LoginVolunteerActivity extends AppCompatActivity {
 
+    public static final String COMPANY = "company";
+    public static final String RESULT = "result";
     Button loginButton;
     TextView signupTextview;
     EditText editTextEmail;
@@ -83,8 +85,7 @@ public class LoginVolunteerActivity extends AppCompatActivity {
             JSONObject jsonObject;
             try {
                 jsonObject = new JSONObject(result);
-                User user = new User(jsonObject);
-                return user;
+                return new User(jsonObject);
             } catch (JSONException e) {
                 e.printStackTrace();
                 return null;
@@ -101,13 +102,13 @@ public class LoginVolunteerActivity extends AppCompatActivity {
         protected void onPostExecute(User user) {
             if (user == null) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(mContext, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
-            } else if (user.getType().equals("company")) {
+                Toast.makeText(mContext, mContext.getString(R.string.invalid_login_credentials), Toast.LENGTH_SHORT).show();
+            } else if (user.getType().equals(COMPANY)) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(mContext, "You are in the wrong login screen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, mContext.getString(R.string.you_are_in_the_wrong_login_screen), Toast.LENGTH_SHORT).show();
             } else {
                 Intent intent = new Intent(mContext, VolunteerDashBoard.class);
-                intent.putExtra("result", user);
+                intent.putExtra(RESULT, user);
                 mContext.startActivity(intent);
             }
         }

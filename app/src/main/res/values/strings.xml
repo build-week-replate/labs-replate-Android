@@ -6,4 +6,6 @@
     <string name="title_activity_pickup_detail_view">PickupDetailView</string>
     <string name="my_pickups">My Pickups</string>
     <string name="available_pickups_near_me">Available Pickups Near Me</string>
+    <string name="invalid_login_credentials">Invalid Login Credentials</string>
+    <string name="you_are_in_the_wrong_login_screen">You are in the wrong login screen</string>
 </resources>
