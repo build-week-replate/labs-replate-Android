@@ -15,7 +15,7 @@
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_name"
-            android:hint="Pickup Name"
+            android:hint="@string/pickup_name"
             android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_date"
-            android:hint="Pickup Date"
+            android:hint="@string/pickup_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_time"
@@ -38,7 +38,7 @@
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_time"
-            android:hint="Pickup Time"
+            android:hint="@string/pickup_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_office_name"
@@ -49,7 +49,7 @@
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_office_name"
-            android:hint="Office Name"
+            android:hint="@string/office_name"
             android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_office_address"
-            android:hint="Office Address"
+            android:hint="@string/office_address"
             android:enabled="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_instructions"
-            android:hint="Pickup Instructions"
+            android:hint="@string/pickup_instructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/editText_detail_schedule_pickup_additional_notes"
@@ -86,7 +86,7 @@
 
         <EditText
             android:id="@+id/editText_detail_schedule_pickup_additional_notes"
-            android:hint="Additional Notes"
+            android:hint="@string/additional_notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/button_detail_schedule_pickup_submit_changes"
@@ -99,7 +99,7 @@
             android:id="@+id/button_detail_schedule_pickup_submit_changes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit Changes"
+            android:text="@string/submit_changes"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/editText_detail_schedule_pickup_date"
             app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />
@@ -109,7 +109,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="Accept Pickup"
+            android:text="@string/accept_pickup"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/editText_detail_schedule_pickup_date"
             app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />
@@ -119,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="Mark As Complete"
+            android:text="@string/mark_as_complete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/editText_detail_schedule_pickup_date"
             app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />
@@ -128,7 +128,7 @@
             android:id="@+id/button_detail_schedule_pickup_delete_pickup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remove this Pickup"
+            android:text="@string/remove_this_pickup"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/editText_detail_schedule_pickup_date"
             app:layout_constraintTop_toBottomOf="@id/editText_detail_schedule_pickup_additional_notes" />
